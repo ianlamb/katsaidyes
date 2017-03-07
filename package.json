@@ -1,0 +1,22 @@
+{
+  "name": "katsaidyes",
+  "version": "1.0.0",
+  "description": "Katherine and Ian's Wedding Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianlamb/katsaidyes.git"
+  },
+  "author": "Ian Lamb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ianlamb/katsaidyes/issues"
+  },
+  "homepage": "https://github.com/ianlamb/katsaidyes#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
