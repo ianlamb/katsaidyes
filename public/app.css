@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+}
+
+h1 {
+    font-size: 6em;
+}
+
+h2 {
+    font-size: 4em;
+}
+
+section {
+    min-height: 600px;
+}
+
+.cover {
+    height: 100vh;
+    background: url('/images/cover.jpg');
+    background-size: cover;
+}
