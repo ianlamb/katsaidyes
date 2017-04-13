@@ -21,7 +21,59 @@ h2 {
 .header {
     position: relative;
     width: 100%;
-    background: purple;
+    height: 80px;
+    background: darkcyan;
+    color: #dfdfdf;
+    padding: 10px 5%;
+    display: flex;
+}
+
+.header-date {
+    flex: 1;
+    display: table-cell;
+    vertical-align: bottom;
+    font-size: 2rem;
+    line-height: 2;
+    text-align: left;
+}
+
+.header-title {
+    flex: 1;
+    display: table-cell;
+    vertical-align: bottom;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.header-rsvp {
+    flex: 1;
+    text-align: right;
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.header-rsvp-btn {
+    display: inline-block;
+    padding: 6px 20px;
+    margin-bottom: 0;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: coral;
+    color: #dfdfdf;
 }
 
 .timeline {
@@ -36,7 +88,7 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: teal;
+    background: lightslategray;
 }
 
 .timeline-nav {
