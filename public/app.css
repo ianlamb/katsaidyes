@@ -1,5 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    font-family: 'League Gothic';
 }
 
 h1 {
@@ -10,8 +18,60 @@ h2 {
     font-size: 4em;
 }
 
-section {
-    min-height: 600px;
+.header {
+    position: relative;
+    width: 100%;
+    background: purple;
+}
+
+.timeline {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.timeline-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: teal;
+}
+
+.timeline-nav {
+    position: absolute;
+    height: 200px;
+    padding: 25px 5%;
+    left: 0;
+    right: 0;
+    bottom: 57px;
+    display: flex;
+    flex-direction: row;
+}
+
+.timeline-nav-item {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    height: 150px;
+    width: 150px;
+    border: 5px solid orange;
+    border-radius: 50%;
+}
+
+.timeline-nav-divider {
+    flex: 1;
+    height: 20px;
+    margin: 65px 10px;
+    background: palegreen;
+}
+
+.timeline-nav-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
 }
 
 .cover {
