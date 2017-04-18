@@ -19,13 +19,16 @@ h2 {
 }
 
 .header {
-    position: relative;
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 80px;
-    background: darkcyan;
-    color: #dfdfdf;
+    background: rgba(255, 255, 255, 0.6);
+    color: orangered;
     padding: 10px 5%;
     display: flex;
+    z-index: 2;
 }
 
 .header-date {
@@ -72,14 +75,17 @@ h2 {
     background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
-    background: coral;
-    color: #dfdfdf;
+    background: orangered;
+    color: #efefef;
 }
 
 .timeline {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 }
 
 .timeline-section {
@@ -88,7 +94,45 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: lightslategray;
+    padding: 120px 60px 40px;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity .5s ease-out;
+}
+
+.timeline-section.active {
+    opacity: 1;
+}
+
+.timeline-section#first-date {
+    background-image: url('/images/2016-05-20 19.22.19 HDR.jpg');
+}
+
+.timeline-section#proposal {
+    background-image: url('/images/cover.jpg');
+}
+
+.timeline-section#wedding {
+    background-image: url('/images/2016-05-28 07.18.06.jpg');
+}
+
+.timeline-section#after-party {
+    background-image: url('/images/2016-11-06 16.29.16.jpg');
+}
+
+.timeline-content {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px 60px;
+    border-radius: 2px;
+}
+.timeline-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 4em;
+}
+.timeline-content p {
+    font-size: 1.8em;
 }
 
 .timeline-nav {
@@ -105,9 +149,9 @@ h2 {
 .timeline-nav-divider {
     position: relative;
     flex: 1;
-    height: 20px;
-    margin: 65px 10px;
-    background: #ccc;
+    height: 10px;
+    margin: 70px 10px;
+    background: #fff;
 }
 
 .timeline-nav-divider:after {
@@ -117,8 +161,8 @@ h2 {
     left: 0;
     bottom: 0;
     width: 0;
-    background: palegreen;
-    box-shadow: 0 0 10px palegreen;
+    background: dodgerblue;
+    box-shadow: 0 0 10px dodgerblue;
     transition: width 1.5s ease-out;
 }
 .timeline-nav-divider.active:after {
@@ -135,9 +179,10 @@ h2 {
     padding: 0;
     height: 150px;
     width: 150px;
-    border: 5px solid palegreen;
-    box-shadow: 0 0 10px palegreen;
+    border: 5px solid dodgerblue;
+    box-shadow: 0 0 10px dodgerblue;
     border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .timeline-nav-link {
@@ -149,9 +194,6 @@ h2 {
     border-radius: 50%;
     transition: background 200ms ease-out;
 }
-.timeline-nav-link:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
 
 .timeline-title {
     position: relative;
@@ -161,7 +203,7 @@ h2 {
     margin-top: 40px;
     line-height: 40px;
     font-size: 2rem;
-    color: lawngreen;
+    color: dodgerblue;
 }
 
 .timeline-date {
@@ -171,11 +213,5 @@ h2 {
     text-align: center;
     line-height: 24px;
     font-size: 1.4rem;
-    color: #dfdfdf;
-}
-
-.cover {
-    height: 100vh;
-    background: url('/images/cover.jpg');
-    background-size: cover;
+    color: dodgerblue;
 }
