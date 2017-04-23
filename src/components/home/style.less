@@ -43,22 +43,22 @@ h2 {
 	&.active {
 		opacity: 1;
 	}
-}
+	
+	&:nth-of-type(1) {
+		background-image: url('/assets/images/2016-05-20 19.22.19 HDR.jpg');
+	}
 
-#first-date {
-    background-image: url('/images/2016-05-20 19.22.19 HDR.jpg');
-}
+	&:nth-of-type(2) {
+		background-image: url('/assets/images/cover.jpg');
+	}
 
-#proposal {
-    background-image: url('/images/cover.jpg');
-}
+	&:nth-of-type(3) {
+		background-image: url('/assets/images/2016-05-28 07.18.06.jpg');
+	}
 
-#wedding {
-    background-image: url('/images/2016-05-28 07.18.06.jpg');
-}
-
-#after-party {
-    background-image: url('/images/2016-11-06 16.29.16.jpg');
+	&:nth-of-type(4) {
+		background-image: url('/assets/images/2016-11-06 16.29.16.jpg');
+	}
 }
 
 .content {
@@ -92,8 +92,9 @@ h2 {
 .navDivider {
     position: relative;
     flex: 1;
+	left: 150px;
     height: 10px;
-    margin: 70px 10px;
+    margin: 70px 160px 70px 10px;
     background: #fff;
 	
 	&:after {
@@ -105,7 +106,7 @@ h2 {
 		width: 0;
 		background: dodgerblue;
 		box-shadow: 0 0 10px dodgerblue;
-		transition: width 1.5s ease-out;
+		transition: width 0.8s ease-out;
 	}
 	&.active:after {
 		width: 50%;
@@ -115,39 +116,40 @@ h2 {
 	}
 }
 
-.navItemWrapper {
+.navItem {
     position: relative;
     flex: 1;
+    display: flex;
+    flex-direction: row;
     margin: 0;
     padding: 0;
 
 	&:last-of-type {
+    	flex: 0 0 150px;
+
 		.navDivider {
 			display: none;
 		}
 	}
 }
 
-.navItem {
-    position: relative;
-    margin: 0;
-    padding: 0;
+.navLink {
+    position: absolute;
+    display: block;
     height: 150px;
     width: 150px;
     border: 5px solid dodgerblue;
     box-shadow: 0 0 10px dodgerblue;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.8);
-}
-
-.navLink {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
+	text-decoration: none;
     z-index: 2;
     border-radius: 50%;
     transition: background 200ms ease-out;
+    background: rgba(255, 255, 255, 0.7);
+
+	&:hover {
+    	background: rgba(255, 255, 255, 1);
+	}
 }
 
 .navTitle {
