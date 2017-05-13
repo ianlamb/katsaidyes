@@ -13,6 +13,10 @@ app.get('/guestlist', function(req, res) {
     let guestList = JSON.parse(dataFile);
     guestList._total = guestList.guests.length;
     guestList._responded = guestList.guests.filter((o) => o.attending).length;
+    guestList._attending = guestList.guests.filter((o) => o.attending === 'yes').length;
+    guestList._extras = guestList.guests.reduce((a, o, i) => {
+        return a + o.extras;
+    }, 0);
     guestList._responsePercentage = Math.floor(guestList._responded / guestList._total * 100);
     res.json(guestList);
 });
