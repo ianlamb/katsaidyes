@@ -89,6 +89,7 @@
     "webpack-dev-server": "^1.15.0"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
     "preact": "^8.1.0",
     "preact-compat": "^3.13.1",
     "preact-render-to-string": "^3.6.0",

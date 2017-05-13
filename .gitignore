@@ -38,3 +38,8 @@ jspm_packages
 
 # Mac
 .DS_Store
+
+# App
+build
+data.json
+data.json.bak
