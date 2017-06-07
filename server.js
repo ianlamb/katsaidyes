@@ -8,9 +8,10 @@ const SECRET = 'irvine';
 app.use(express.static('build'));
 app.use(bodyParser.json());
 
-app.get('/guestlist', function(req, res) {
+app.get('/api/guestlist', function(req, res) {
     const dataFile = fs.readFileSync('data.json');
     let guestList = JSON.parse(dataFile);
+    guestList.simpleList = guestList.guests.map((o) => o.firstName + ' ' + o.lastName);
     guestList._total = guestList.guests.length;
     guestList._responded = guestList.guests.filter((o) => o.attending).length;
     guestList._attending = guestList.guests.filter((o) => o.attending === 'yes').length;
@@ -21,7 +22,7 @@ app.get('/guestlist', function(req, res) {
     res.json(guestList);
 });
 
-app.post('/rsvp', function(req, res) {
+app.post('/api/rsvp', function(req, res) {
     const reqData = req.body;
     console.log('Request Data:', reqData);
 

@@ -14,7 +14,7 @@ export class RsvpModal extends Component {
 	onSubmit(event) {
 		event.preventDefault();
 
-		const url = '/rsvp';
+		const url = '/api/rsvp';
 		let data = JSON.stringify(this.state);
 		let http = new XMLHttpRequest();
 		http.open('POST', url, true);
