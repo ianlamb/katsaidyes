@@ -9,6 +9,8 @@ export class RsvpModal extends Component {
 
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onInputChange = this.onInputChange.bind(this);
+		this.onFocus = this.onFocus.bind(this);
+		this.onBlur = this.onBlur.bind(this);
     }
 
 	onSubmit(event) {
@@ -55,22 +57,40 @@ export class RsvpModal extends Component {
 		this.setState({ [name]: value });
 	}
 
+    onFocus(event) {
+        let stateProp = event.target.id + 'Filled';
+        if (!this.state[stateProp]) {
+            this.setState({
+                [stateProp]: true
+            });
+        }
+    }
+
+    onBlur(event) {
+        let stateProp = event.target.id + 'Filled';
+        if (!this.state[event.target.id]) {
+            this.setState({
+                [stateProp]: false
+            });
+        }
+    }
+
 	render() {
 		return (
 			<div class={style.rsvpModal + ' ' + (this.props.show ? '' : style.hide)}>
 				<h2>RSVP</h2>
 				<form onSubmit={this.onSubmit} id='rsvpForm'>
-					<div class={style.formGroup}>
-						<label for='secret'>What city did Ian and Kat move to last year?</label>
-						<input type='text' name='secret' id='secret' value={this.state.secret} onChange={this.onInputChange} />
+					<div class={style.formGroup + ` ${this.state.secretFilled ? style.filled : ''}`}>
+						<input type='text' name='secret' id='secret' class={style.textInput} value={this.state.secret} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
+						<label class={style.label} for='secret'><span class={style.labelContent}>What city did Ian and Kat move to last year?</span></label>
 					</div>
-					<div class={style.formGroup}>
-						<label for='firstName'>First Name</label>
-						<input type='text' name='firstName' id='firstName' value={this.state.firstName} onChange={this.onInputChange} />
+					<div class={style.formGroup + ` ${this.state.firstNameFilled ? style.filled : ''}`}>
+						<input type='text' name='firstName' id='firstName' class={style.textInput} value={this.state.firstName} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
+						<label class={style.label} for='firstName'><span class={style.labelContent}>First Name</span></label>
 					</div>
-					<div class={style.formGroup}>
-						<label for='lastName'>Last Name</label>
-						<input type='text' name='lastName' id='lastName' value={this.state.lastName} onChange={this.onInputChange} />
+					<div class={style.formGroup + ` ${this.state.lastNameFilled ? style.filled : ''}`}>
+						<input type='text' name='lastName' id='lastName' class={style.textInput} value={this.state.lastName} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
+						<label class={style.label} for='lastName'><span class={style.labelContent}>Last Name</span></label>
 					</div>
 					<div class={style.formGroup}>
 						<label>Will you be attending?</label>
