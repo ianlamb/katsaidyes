@@ -11,15 +11,35 @@ body {
 }
 
 h1 {
+    margin: 0;
     font-size: 6em;
 }
 
 h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
     font-size: 4em;
 }
 
 h3 {
+    margin: 0;
     font-size: 2em;
+    color: @primary;
+
+    &.important {
+        color: @secondary;
+        margin-bottom: 20px;
+    }
+}
+
+h4 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+p {
+    font-size: 1.8em;
 }
 
 .home {
@@ -28,12 +48,12 @@ h3 {
 .section {
     position: relative;
     padding: 40px 60px;
+    text-align: center;
 
     &:nth-of-type(1) {
         color: @white !important;
         min-height: 860px;
         padding: 100px 60px 40px;
-        text-align: center;
         background-image: url('/assets/images/hero.jpg');
         background-size: cover;
         background-repeat: no-repeat;
@@ -44,26 +64,39 @@ h3 {
 .content {
     max-width: 960px;
     margin: 0 auto;
-
-    h1 {
-        margin: 0;
-    }
-
-	h2 {
-		margin-top: 0;
-		margin-bottom: 20px;
-		font-size: 4em;
-	}
-
-    h3 {
-        margin: 0;
-    }
-
-	p {
-		font-size: 1.8em;
-	}
 }
 
 .video {
     width: 100%;
+}
+
+.rsvpBtn {
+    display: block;
+    padding: 10px 20px;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border-radius: 4px;
+    border: 2px solid @secondary;
+    background: transparent;
+    color: @secondary;
+    transition: all .15s ease-out;
+
+    &:hover {
+        color: @white;
+        border-color: transparent;
+        background: @primary;
+    }
 }
