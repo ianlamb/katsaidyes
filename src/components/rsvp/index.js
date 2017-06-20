@@ -78,38 +78,40 @@ export class RsvpModal extends Component {
 	render() {
 		return (
 			<div class={style.rsvpModal + ' ' + (this.props.show ? '' : style.hide)}>
-				<h2>RSVP</h2>
+				<h3>RSVP</h3>
 				<form onSubmit={this.onSubmit} id='rsvpForm'>
-					<div class={style.formGroup + ` ${this.state.secretFilled ? style.filled : ''}`}>
+					<div class={`${style.formGroup} ${style.text} ${this.state.secretFilled ? style.filled : ''}`}>
 						<input type='text' name='secret' id='secret' class={style.textInput} value={this.state.secret} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
 						<label class={style.label} for='secret'><span class={style.labelContent}>What city did Ian and Kat move to last year?</span></label>
 					</div>
-					<div class={style.formGroup + ` ${this.state.firstNameFilled ? style.filled : ''}`}>
+					<div class={`${style.formGroup} ${style.text} ${this.state.firstNameFilled ? style.filled : ''}`}>
 						<input type='text' name='firstName' id='firstName' class={style.textInput} value={this.state.firstName} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
 						<label class={style.label} for='firstName'><span class={style.labelContent}>First Name</span></label>
 					</div>
-					<div class={style.formGroup + ` ${this.state.lastNameFilled ? style.filled : ''}`}>
+					<div class={`${style.formGroup} ${style.text} ${this.state.lastNameFilled ? style.filled : ''}`}>
 						<input type='text' name='lastName' id='lastName' class={style.textInput} value={this.state.lastName} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
 						<label class={style.label} for='lastName'><span class={style.labelContent}>Last Name</span></label>
 					</div>
 					<div class={style.formGroup}>
-						<label>Will you be attending?</label>
+                        <label>Will you be attending?</label>
+                        <br />
 						<label>
-							<input type='radio' name='attending' value='yes' checked={this.state.attending === 'yes'} onChange={this.onInputChange} />
-							Attending
+							<input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='yes' checked={this.state.attending === 'yes'} onChange={this.onInputChange} />
+							Yes
 						</label>
+                        <br />
 						<label>
-							<input type='radio' name='attending' value='no' checked={this.state.attending === 'no'} onChange={this.onInputChange} />
-							Not attending
+							<input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='no' checked={this.state.attending === 'no'} onChange={this.onInputChange} />
+							No
 						</label>
 					</div>
 					<div class={style.formGroup}>
 						<label>
-							<input type='checkbox' name='extras' value='1' checked={this.state.extras} onChange={this.onInputChange} />
+							<input type='checkbox' class={style.optionInput + ' ' + style.checkbox} name='extras' value='1' checked={this.state.extras} onChange={this.onInputChange} />
 							Are you bringing a +1 that did not receive an invitation?
 						</label>
 					</div>
-					<button>Confirm</button>
+					<button type='button' class={style.button}>Confirm</button>
 				</form>
 			</div>
 		);

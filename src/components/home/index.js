@@ -61,7 +61,7 @@ export default class Home extends Component {
                         <h3>Gifts</h3>
                         <h4>Joining us is all the gift we want, please don't buy us anything!</h4>
 
-                        <button class={style.rsvpBtn} onClick={this.onRsvpBtnClick}>RSVP Now</button>
+                        <button class={style.button} onClick={this.onRsvpBtnClick}>RSVP Now</button>
                     </div>
                 </section>
                 <section id='proposal' className={style.section}>
