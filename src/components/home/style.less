@@ -12,18 +12,21 @@ body {
 
 h1 {
     margin: 0;
-    font-size: 6em;
+    font-size: 7rem;
+    text-align: center;
+    color: rgba(255, 245, 235, 0.9);
+    user-select: none;
 }
 
 h2 {
     margin-top: 0;
     margin-bottom: 20px;
-    font-size: 4em;
+    font-size: 4rem;
 }
 
 h3 {
     margin: 0;
-    font-size: 2em;
+    font-size: 2rem;
     color: @primary;
 
     &.important {
@@ -35,20 +38,27 @@ h3 {
 h4 {
     margin-top: 0;
     margin-bottom: 20px;
-    font-size: 1.8em;
+    font-size: 1.8rem;
 }
 
 p {
-    font-size: 1.8em;
+    font-size: 1.6rem;
+}
+
+.engagementIcon svg {
+    height: 7rem;
+    margin: 0 1rem;
+    fill: @secondary;
 }
 
 .home {
+    padding-bottom: 200px;
 }
 
 .section {
     position: relative;
     padding: 40px 60px;
-    text-align: center;
+    text-align: left;
 
     &:nth-of-type(1) {
         color: @white !important;
