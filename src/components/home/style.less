@@ -6,24 +6,38 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 12px;
+
+    @media (min-width: 768px) {
+        font-size: 16px;
+    }
+}
+
 body {
     margin: 0;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
+    background-image: url('/assets/images/525848.jpg');
+    background-repeat: repeat;
+    background-size: cover;
 }
 
 h1 {
     margin: 0;
-    font-size: 7rem;
+    font-size: 5rem;
     text-align: center;
     color: rgba(255, 245, 235, 0.9);
     user-select: none;
+
+    @media (min-width: 768px) {
+        font-size: 6rem;
+    }
 }
 
 h2 {
     margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-size: 3.5rem;
 }
 
 h3 {
@@ -33,41 +47,83 @@ h3 {
 
     &.important {
         color: @secondary;
-        margin-bottom: 20px;
+        margin-bottom: 1rem;
     }
 }
 
 h4 {
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
     font-size: 1.8rem;
+}
+
+h5 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
 }
 
 p {
     font-size: 1.6rem;
+    margin: 0.2rem 0 2rem;
 }
 
 .engagementIcon svg {
-    height: 7rem;
+    height: 5rem;
     margin: 0 1rem;
     fill: @secondary;
+
+    @media (min-width: 768px) {
+        font-size: 6rem;
+    }
+}
+
+.heartIcon {
+    display: block;
+    width: 10rem;
+    margin: 0 auto;
+
+    svg {
+        fill: @secondary;
+    }
 }
 
 .home {
-    padding-bottom: 200px;
+    
 }
 
 .section {
     position: relative;
-    padding: 40px 60px;
+    padding: 0 1rem;
     text-align: left;
+    background: white;
+
+    @media (min-width: 768px) {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.95) 80%, rgba(255, 255, 255, 0.4));
+    }
+
+    .content {
+        max-width: 960px;
+        padding: 4rem 0;
+        margin: 0 auto;
+        border-bottom: 1px solid @black;
+    }
+
+    .button {
+        margin-top: 3rem;
+    }
 
     &.hero {
         color: @white !important;
-        min-height: 860px;
-        padding: 100px 60px 40px;
-        background: linear-gradient(to bottom, @primary, white);
+        min-height: 100vh;
+        padding: 10rem 0;
+        background: linear-gradient(to bottom, white, @primary);
 
+        .content {
+            border: none;
+        }
+
+        &:before,
         &:after {
             content: '';
             position: absolute;
@@ -75,12 +131,23 @@ p {
             left: 0;
             right: 0;
             bottom: 0;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        &:before {
             background-image: url('/assets/images/hero.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: top -500px center;
-            opacity: 0;
-            z-index: 1;
+            background-position: center;
+
+            @media (min-width: 768px) {
+                top: -300px;
+            }
+        }
+
+        &:after {
+            background: linear-gradient(to bottom, fade(white, 0%), fade(@black, 100%));
         }
 
         > * {
@@ -89,19 +156,33 @@ p {
         }
 
         &.showBackground {
+            &:before,
             &:after {
-                opacity: 1;
+                opacity: 0.8;
                 transition: opacity @heroFadeInSpeed ease-out;
             }
         }
     }
-}
 
-.content {
-    max-width: 960px;
-    margin: 0 auto;
+    &:last-of-type {
+        padding: 4rem 0;
+    }
 }
 
 .video {
     width: 100%;
+}
+
+iframe {
+    border: 0;
+    float: right;
+    margin: 0.5rem;
+    width: 100%;
+    height: 300px;
+
+    @media (min-width: 768px) {
+        width: 400px;
+        margin-top: 0;
+        margin-right: 0;
+    }
 }

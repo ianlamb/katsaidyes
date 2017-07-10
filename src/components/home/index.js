@@ -151,12 +151,34 @@ export default class Home extends Component {
                     <div className={style.content}>
                         <h2>Wedding Details</h2>
                         <h3 className={style.important}>Saturday December 23rd, 2017<br />London, ON, Canada</h3>
+                        <p>The wedding will be small. We truly love and appreciate the support of all of our friends, but the invitation list won't be long.</p>
+
                         <h3>Ceremony</h3>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11683.17951492581!2d-81.461053!3d42.940451!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xafe15d1b42c6651!2sFernwood+Hills!5e0!3m2!1sen!2sus!4v1499657140004"
+                            width="400" height="300" frameborder="0" allowfullscreen></iframe>
+
                         <h4>Fernwood Hills @ 2:00PM - 4:00PM</h4>
+                        <p>The ceremony will be short and the dress code will be smart casual. It's outside in December, so please wear appropriate clothes to stay warm! There will be coffee, hot chocolate and snacks. Feel free to arrive anytime after 1pm to hang out.</p>
+
+                        <h5>Gifts</h5>
+                        <p>Joining us is all we want, please don't bring gifts! (Seriously)</p>
+
+                        <h5>Location &amp; Parking</h5>
+                        <p>9533 Oxbow Dr, Middlesex Centre, ON N0L 1R0, Canada</p>
+                        <p>There will be plenty of on-site parking.</p>
+
                         <h3>Dinner</h3>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3461.9861734855726!2d-81.25318868434042!3d42.98760390323119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882ef20261fba639%3A0xbf4fc4817311727e!2sBlack+Trumpet+Restaurant!5e1!3m2!1sen!2sus!4v1499657370393"
+                            width="400" height="300" frameborder="0" allowfullscreen></iframe>
+
                         <h4>Black Trumpet @ 5:00PM - 8:00PM</h4>
-                        <h3>Gifts</h3>
-                        <h4>Joining us is all we want, please don't bring gifts! (Seriously)</h4>
+                        <p>The restaurant is downtown so please arrange for transportation from the venue and allow some time to find parking. Everyone will be able to choose their menu options at the restaurant. Alcohol will not be included with the dinner, but will be available for purchase.</p>
+
+                        <h5>Location &amp; Parking</h5>
+                        <p>523 Richmond St, London, ON N6A5N6, Canada</p>
+                        <p>There are lots of options for parking downtown. Our suggestion is to park on the street or one of the municipal lots on Kent St near Richmond or Queens St near Richmond. Metered parking is free after 6PM on Saturdays, so you should only have to pay for 1 hour.</p>
 
                         <button class={style.button} onClick={this.onRsvpBtnClick}>RSVP Now</button>
                     </div>
@@ -181,6 +203,18 @@ export default class Home extends Component {
                         />
                     </div>
                 </section>
+
+                <section id='footer' className={style.section}>
+                    <span class={style.heartIcon}>
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 51.997 51.997" style="enable-background:new 0 0 51.997 51.997;">
+                            <g>
+                                <path d="M51.911,16.242C51.152,7.888,45.239,1.827,37.839,1.827c-4.93,0-9.444,2.653-11.984,6.905   c-2.517-4.307-6.846-6.906-11.697-6.906c-7.399,0-13.313,6.061-14.071,14.415c-0.06,0.369-0.306,2.311,0.442,5.478   c1.078,4.568,3.568,8.723,7.199,12.013l18.115,16.439l18.426-16.438c3.631-3.291,6.121-7.445,7.199-12.014   C52.216,18.553,51.97,16.611,51.911,16.242z M49.521,21.261c-0.984,4.172-3.265,7.973-6.59,10.985L25.855,47.481L9.072,32.25   c-3.331-3.018-5.611-6.818-6.596-10.99c-0.708-2.997-0.417-4.69-0.416-4.701l0.015-0.101C2.725,9.139,7.806,3.826,14.158,3.826   c4.687,0,8.813,2.88,10.771,7.515l0.921,2.183l0.921-2.183c1.927-4.564,6.271-7.514,11.069-7.514   c6.351,0,11.433,5.313,12.096,12.727C49.938,16.57,50.229,18.264,49.521,21.261z"></path>
+                                <path d="M15.999,7.904c-5.514,0-10,4.486-10,10c0,0.553,0.447,1,1,1s1-0.447,1-1c0-4.411,3.589-8,8-8c0.553,0,1-0.447,1-1   S16.551,7.904,15.999,7.904z"></path>
+                            </g>
+                        </svg>
+                    </span>
+                </section>
+
                 <RsvpMask show={this.state.showRsvpMask} onClick={this.onRsvpMaskClick} />
                 <RsvpModal show={this.state.showRsvpModal} />
             </div>
