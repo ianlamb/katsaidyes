@@ -156,7 +156,7 @@ export default class Home extends Component {
                         <h3>Ceremony</h3>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11683.17951492581!2d-81.461053!3d42.940451!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xafe15d1b42c6651!2sFernwood+Hills!5e0!3m2!1sen!2sus!4v1499657140004"
-                            width="400" height="300" frameborder="0" allowfullscreen></iframe>
+                            frameborder="0" allowfullscreen></iframe>
 
                         <h4>Fernwood Hills @ 2:00PM - 4:00PM</h4>
                         <p>The ceremony will be short and the dress code will be smart casual. It's outside in December, so please wear appropriate clothes to stay warm! There will be coffee, hot chocolate and snacks. Feel free to arrive anytime after 1pm to hang out.</p>
@@ -171,7 +171,7 @@ export default class Home extends Component {
                         <h3>Dinner</h3>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3461.9861734855726!2d-81.25318868434042!3d42.98760390323119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882ef20261fba639%3A0xbf4fc4817311727e!2sBlack+Trumpet+Restaurant!5e1!3m2!1sen!2sus!4v1499657370393"
-                            width="400" height="300" frameborder="0" allowfullscreen></iframe>
+                            frameborder="0" allowfullscreen></iframe>
 
                         <h4>Black Trumpet @ 5:00PM - 8:00PM</h4>
                         <p>The restaurant is downtown so please arrange for transportation from the venue and allow some time to find parking. Everyone will be able to choose their menu options at the restaurant. Alcohol will not be included with the dinner, but will be available for purchase.</p>
