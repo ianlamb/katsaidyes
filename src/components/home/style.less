@@ -1,5 +1,7 @@
 @import '~style/helpers';
 
+@heroFadeInSpeed: 1s;
+
 * {
     box-sizing: border-box;
 }
@@ -60,14 +62,38 @@ p {
     padding: 40px 60px;
     text-align: left;
 
-    &:nth-of-type(1) {
+    &.hero {
         color: @white !important;
         min-height: 860px;
         padding: 100px 60px 40px;
-        background-image: url('/assets/images/hero.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: top -500px center;
+        background: linear-gradient(to bottom, @primary, white);
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('/assets/images/hero.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top -500px center;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        &.showBackground {
+            &:after {
+                opacity: 1;
+                transition: opacity @heroFadeInSpeed ease-out;
+            }
+        }
     }
 }
 

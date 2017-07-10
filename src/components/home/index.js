@@ -6,6 +6,7 @@ import { RsvpMask, RsvpModal } from '../rsvp';
 import throttle from 'lodash/throttle';
 
 const imageDir = '../../assets/images';
+const heroFadeInDelay = 250;
 
 export default class Home extends Component {
     constructor() {
@@ -48,6 +49,7 @@ export default class Home extends Component {
         ];
 
         this.state = {
+            loadHero: false,
             showRsvpMask: false,
             showRsvpModal: false,
             isPhotoswipeOpen: false
@@ -62,6 +64,10 @@ export default class Home extends Component {
     componentDidMount() {
         this.checkScroll();
         window.addEventListener('scroll', throttle(this.checkScroll, 50));
+
+        setTimeout(() => {
+            this.setState({ loadHero: true });
+        }, heroFadeInDelay);
     }
 
     handlePhotoswipeClose() {
@@ -97,7 +103,7 @@ export default class Home extends Component {
     render() {
         return (
             <div className={style.home}>
-                <section id='hero' className={style.section}>
+                <section id='hero' className={`${style.section} ${style.hero} ${this.state.loadHero ? ' ' + style.showBackground : ''}`}>
                     <div className={style.content}>
                         <h1>
                             Kat
@@ -150,14 +156,15 @@ export default class Home extends Component {
                         <h3>Dinner</h3>
                         <h4>Black Trumpet @ 5:00PM - 8:00PM</h4>
                         <h3>Gifts</h3>
-                        <h4>Joining us is all the gift we want, please don't buy us anything!</h4>
+                        <h4>Joining us is all we want, please don't bring gifts! (Seriously)</h4>
 
                         <button class={style.button} onClick={this.onRsvpBtnClick}>RSVP Now</button>
                     </div>
                 </section>
                 <section id='proposal' className={style.section}>
                     <div className={style.content}>
-                        <h2>Proposal in Zion National Park</h2>
+                        <h2>Proposal</h2>
+                        <p>On November 25<sup>th</sup>, 2016 after riding our motorcycles through the desert to Zion National Park in Utah and climbing the precarious Angel's Landing trail the question was dropped. She didn't take long to answer ;)</p>
                         <video className={style.video} src="/assets/videos/proposal.mp4" controls />
                     </div>
                 </section>

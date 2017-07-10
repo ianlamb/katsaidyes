@@ -7,6 +7,7 @@
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.7);
+    z-index: 99;
 }
 
 .rsvpModal {
@@ -15,18 +16,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 640px;
-    height: 680px;
+    height: 640px;
     background: #efefef;
-    border: 2px solid @primary;
+    border: 2px solid @black;
     padding: 20px;
     font-size: 1.4em;
+    z-index: 100;
 
     .button {
-        margin: 0 auto;
+        margin: 10px auto;
     }
 
-    h3 {
-        margin: 0 0 20px 0;
+    h2 {
+        margin: 0;
         text-align: center;
     }
 }
@@ -41,6 +43,10 @@
 
     &.text {
         overflow: hidden;
+    }
+
+    > label:not(:last-of-type) {
+        margin-right: 40px;
     }
 }
 

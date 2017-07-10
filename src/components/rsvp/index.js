@@ -78,7 +78,7 @@ export class RsvpModal extends Component {
 	render() {
 		return (
 			<div class={style.rsvpModal + ' ' + (this.props.show ? '' : style.hide)}>
-				<h3>RSVP</h3>
+				<h2>RSVP</h2>
 				<form onSubmit={this.onSubmit} id='rsvpForm'>
 					<div class={`${style.formGroup} ${style.text} ${this.state.secretFilled ? style.filled : ''}`}>
 						<input type='text' name='secret' id='secret' class={style.textInput} value={this.state.secret} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
@@ -99,7 +99,6 @@ export class RsvpModal extends Component {
 							<input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='yes' checked={this.state.attending === 'yes'} onChange={this.onInputChange} />
 							Yes
 						</label>
-                        <br />
 						<label>
 							<input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='no' checked={this.state.attending === 'no'} onChange={this.onInputChange} />
 							No
