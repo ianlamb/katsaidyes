@@ -1,6 +1,6 @@
 @import '~style/helpers';
 
-@heroFadeInSpeed: 1s;
+@heroFadeInSpeed: 750ms;
 
 * {
     box-sizing: border-box;
@@ -17,7 +17,7 @@ html {
 body {
     margin: 0;
     font-family: 'Josefin Sans', sans-serif;
-    background-image: url('/assets/images/525848.jpg');
+    background-image: url('/assets/images/525848-2.jpg');
     background-repeat: repeat;
     background-size: cover;
 }
@@ -89,24 +89,44 @@ p {
 }
 
 .home {
-    
+    position: relative;
 }
 
 .section {
     position: relative;
-    padding: 0 1rem;
+    padding: 0;
     text-align: left;
-    background: white;
-
-    @media (min-width: 768px) {
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.95) 80%, rgba(255, 255, 255, 0.4));
-    }
 
     .content {
+        position: relative;
         max-width: 960px;
-        padding: 4rem 0;
+        padding: 4rem 1.5rem;
         margin: 0 auto;
-        border-bottom: 1px solid @black;
+        background: white;
+    }
+
+    @media (min-width: 768px) {
+        &:not(.hero) {
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+            // left side fade-to-white
+            &:before {
+                right: ~"calc(50% + 480px)";
+                background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
+            }
+            // right side fade-to-white
+            &:after {
+                left: ~"calc(50% + 480px)";
+                background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
+            }
+        }
     }
 
     .button {
@@ -120,7 +140,11 @@ p {
         background: linear-gradient(to bottom, white, @primary);
 
         .content {
-            border: none;
+            background: transparent;
+
+            &:after {
+                display: none;
+            }
         }
 
         &:before,
@@ -135,6 +159,7 @@ p {
             opacity: 0;
         }
 
+        // hero background image
         &:before {
             background-image: url('/assets/images/hero.jpg');
             background-size: cover;
@@ -146,6 +171,7 @@ p {
             }
         }
 
+        // hero background gradient overlay
         &:after {
             background: linear-gradient(to bottom, fade(white, 0%), fade(@black, 100%));
         }
@@ -164,8 +190,23 @@ p {
         }
     }
 
-    &:last-of-type {
-        padding: 4rem 0;
+    &:not(:last-of-type) {
+        .content {
+            // horizontal section divider
+            &:after {
+                content: '';
+                position: absolute;
+                left: 1.5rem;
+                right: 1.5rem;
+                bottom: 0;
+                height: 3px;
+                background: transparent;
+                border-top: 1px solid;
+                border-bottom: 1px solid;
+                border-color: @gray;
+                z-index: 10;
+            }
+        }
     }
 }
 
@@ -185,4 +226,10 @@ iframe {
         margin-top: 0;
         margin-right: 0;
     }
+}
+
+.footerText {
+    position: relative;
+    top: 2rem;
+    text-align: center;
 }
