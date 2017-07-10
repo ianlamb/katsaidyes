@@ -55,6 +55,10 @@ export class RsvpModal extends Component {
 			value = input.checked ? value : 0;
 		}
 		this.setState({ [name]: value });
+
+        if (name === 'attending' && value === 'no') {
+            this.setState({ extras: 0 });
+        }
 	}
 
     onFocus(event) {
@@ -104,13 +108,13 @@ export class RsvpModal extends Component {
 							No
 						</label>
 					</div>
-					<div class={style.formGroup}>
+					<div class={`${style.formGroup} ${this.state.attending !== 'yes' ? style.hideOption : ''}`}>
 						<label>
 							<input type='checkbox' class={style.optionInput + ' ' + style.checkbox} name='extras' value='1' checked={this.state.extras} onChange={this.onInputChange} />
 							Are you bringing a +1 that did not receive an invitation?
 						</label>
 					</div>
-					<button type='button' class={style.button}>Confirm</button>
+					<button type='submit' class={style.button}>Confirm</button>
 				</form>
 			</div>
 		);

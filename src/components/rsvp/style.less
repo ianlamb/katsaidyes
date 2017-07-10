@@ -16,7 +16,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 640px;
-    height: 640px;
+    height: auto;
     background: #efefef;
     border: 2px solid @black;
     padding: 20px;
@@ -45,8 +45,20 @@
         overflow: hidden;
     }
 
-    > label:not(:last-of-type) {
-        margin-right: 40px;
+    > label {
+        opacity: 1;
+        transition: all .3s ease-out;
+
+        &:not(:last-of-type) {
+            margin-right: 40px;
+        }
+    }
+
+    &.hideOption {
+        > label {
+            visibility: hidden;
+            opacity: 0;
+        }
     }
 }
 
