@@ -1,19 +1,19 @@
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import autoprefixer from 'autoprefixer';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import ReplacePlugin from 'replace-bundle-webpack-plugin';
-import OfflinePlugin from 'offline-plugin';
-import path from 'path';
-import V8LazyParseWebpackPlugin from 'v8-lazy-parse-webpack-plugin';
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ReplacePlugin = require('replace-bundle-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
+const path = require('path');
+const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
 const ENV = process.env.NODE_ENV || 'development';
 
 const CSS_MAPS = ENV!=='production';
 
 module.exports = {
 	context: path.resolve(__dirname, "src"),
-	entry: './index.js',
+	entry: ['./index.js'],
 
 	output: {
 		path: path.resolve(__dirname, "build"),
@@ -79,7 +79,7 @@ module.exports = {
 			},
 			{
 				test: /\.(svg|woff2?|ttf|eot|jpe?g|png|gif)(\?.*)?$/i,
-				loader: ENV==='production' ? 'file-loader' : 'url-loader'
+				loader: ENV==='production' ? 'file-loader' : 'url-loader' 
 			}
 		]
 	},
@@ -102,8 +102,7 @@ module.exports = {
 			minify: { collapseWhitespace: true }
 		}),
 		new CopyWebpackPlugin([
-			{ from: './manifest.json', to: './' },
-			{ from: './favicon.ico', to: './' }
+            { from: './assets', to: './' }
 		])
 	]).concat(ENV==='production' ? [
 		new V8LazyParseWebpackPlugin(),
@@ -147,7 +146,9 @@ module.exports = {
 			],
 			publicPath: '/'
 		})
-	] : []),
+	] : [
+        new webpack.HotModuleReplacementPlugin()
+    ]),
 
 	stats: { colors: true },
 
@@ -160,22 +161,6 @@ module.exports = {
 		setImmediate: false
 	},
 
-	devtool: ENV==='production' ? 'source-map' : 'cheap-module-eval-source-map',
+	devtool: ENV==='production' ? 'source-map' : 'cheap-module-eval-source-map'
 
-	devServer: {
-		port: process.env.PORT || 8080,
-		host: 'localhost',
-		colors: true,
-		publicPath: '/',
-		contentBase: './src',
-		historyApiFallback: true,
-		open: true,
-		proxy: {
-			// OPTIONAL: proxy configuration:
-			// '/optional-prefix/**': { // path pattern to rewrite
-			//   target: 'http://target-host.com',
-			//   pathRewrite: path => path.replace(/^\/[^\/]+\//, '')   // strip first path segment
-			// }
-		}
-	}
 };
