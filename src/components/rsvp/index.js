@@ -83,22 +83,22 @@ export class RsvpModal extends Component {
 		return (
 			<div class={style.rsvpModal + ' ' + (this.props.show ? '' : style.hide)}>
 				<h2>RSVP</h2>
+                <p class={style.infoParagraph}>Please make individual submissions for each person that received an invitation.</p>
 				<form onSubmit={this.onSubmit} id='rsvpForm'>
 					<div class={`${style.formGroup} ${style.text} ${this.state.secretFilled ? style.filled : ''}`}>
 						<input type='text' name='secret' id='secret' class={style.textInput} value={this.state.secret} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
-						<label class={style.label} for='secret'><span class={style.labelContent}>What city did Ian and Kat move to last year?</span></label>
+						<label class={style.label} for='secret'><span class={style.labelContent}>Which state did Ian and Kat move to last year?</span></label>
 					</div>
-					<div class={`${style.formGroup} ${style.text} ${this.state.firstNameFilled ? style.filled : ''}`}>
+					<div class={`${style.formGroup} ${style.twoColumn} ${style.text} ${this.state.firstNameFilled ? style.filled : ''}`}>
 						<input type='text' name='firstName' id='firstName' class={style.textInput} value={this.state.firstName} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
 						<label class={style.label} for='firstName'><span class={style.labelContent}>First Name</span></label>
 					</div>
-					<div class={`${style.formGroup} ${style.text} ${this.state.lastNameFilled ? style.filled : ''}`}>
+					<div class={`${style.formGroup} ${style.twoColumn} ${style.text} ${this.state.lastNameFilled ? style.filled : ''}`}>
 						<input type='text' name='lastName' id='lastName' class={style.textInput} value={this.state.lastName} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
 						<label class={style.label} for='lastName'><span class={style.labelContent}>Last Name</span></label>
 					</div>
 					<div class={style.formGroup}>
                         <label>Will you be attending?</label>
-                        <br />
 						<label>
 							<input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='yes' checked={this.state.attending === 'yes'} onChange={this.onInputChange} />
 							Yes
@@ -113,6 +113,10 @@ export class RsvpModal extends Component {
 							<input type='checkbox' class={style.optionInput + ' ' + style.checkbox} name='extras' value='1' checked={this.state.extras} onChange={this.onInputChange} />
 							Are you bringing a +1 that did not receive an invitation?
 						</label>
+					</div>
+					<div class={`${style.formGroup}`}>
+						<label>Comments (optional)</label>
+                        <textarea></textarea>
 					</div>
 					<button type='submit' class={style.button}>Confirm</button>
 				</form>

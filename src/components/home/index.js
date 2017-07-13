@@ -162,11 +162,11 @@ export default class Home extends Component {
                         <p>The ceremony will be short and the dress code will be smart casual. It's outside in December, so please wear appropriate clothes to stay warm! There will be coffee, hot chocolate and snacks. Feel free to arrive anytime after 1pm to hang out.</p>
 
                         <h5>Gifts</h5>
-                        <p>Joining us is all we want, please don't bring gifts! (Seriously)</p>
+                        <p>Joining us is all we want, please don't bring gifts! Instead, please consider joining us for a Hawaii destination party after the wedding if you have the means to do so. Details for this will be sorted out on Facebook.</p>
 
                         <h5>Location &amp; Parking</h5>
                         <p>9533 Oxbow Dr, Middlesex Centre, ON N0L 1R0, Canada</p>
-                        <p>There will be plenty of on-site parking.</p>
+                        <p>There will be plenty of free on-site parking.</p>
 
                         <h3>Dinner</h3>
                         <iframe
@@ -178,7 +178,10 @@ export default class Home extends Component {
 
                         <h5>Location &amp; Parking</h5>
                         <p>523 Richmond St, London, ON N6A5N6, Canada</p>
-                        <p>There are lots of options for parking downtown. Our suggestion is to park on the street or one of the municipal lots on Kent St near Richmond or Queens St near Richmond. Metered parking is free after 6PM on Saturdays, so you should only have to pay for 1 hour.</p>
+                        <p>There are lots of options for parking downtown. Our suggestion is to park on the street or at one of the municipal lots on Kent St near Richmond or Queens St near Richmond. Metered parking is free after 6PM on Saturdays, so you should only have to pay for 1 hour.</p>
+
+                        <h3>After Party</h3>
+                        <p>After dinner everyone is free to take off or join us for some drinks and socializing at a nearby establishment (likely Milos' Craft Beer Emporium).</p>
 
                         <button class={style.button} onClick={this.onRsvpBtnClick}>RSVP Now</button>
                     </div>

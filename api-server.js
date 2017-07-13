@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const fs = require('fs');
 const serveStatic = require("serve-static");
 
-const SECRET = 'irvine';
+const SECRET = 'california';
 
 module.exports = (PORT) => {
     PORT = PORT || 8181;
