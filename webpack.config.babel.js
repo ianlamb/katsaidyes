@@ -78,8 +78,8 @@ module.exports = {
 				loader: 'raw-loader'
 			},
 			{
-				test: /\.(svg|woff2?|ttf|eot|jpe?g|png|gif)(\?.*)?$/i,
-				loader: ENV==='production' ? 'file-loader' : 'url-loader' 
+				test: /\.(svg|woff2?|ttf|eot|jpe?g|png|gif|mp4|webm)(\?.*)?$/i,
+				loader: ENV==='production' ? 'file-loader' : 'url-loader'
 			}
 		]
 	},

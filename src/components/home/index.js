@@ -7,6 +7,11 @@ import throttle from 'lodash/throttle';
 
 const imageDir = '../../assets/images';
 const heroFadeInDelay = 250;
+const assets = {
+    videos: {
+        proposal: require('../../assets/videos/proposal.mp4')
+    }
+}
 
 export default class Home extends Component {
     constructor() {
@@ -19,29 +24,29 @@ export default class Home extends Component {
         };
         this.photos = [
             {
-                src: `${imageDir}/19705449574_4b1c9404a9_o.jpg`,
-                thumbnail: `${imageDir}/19705449574_4b1c9404a9_o.jpg`,
+                src: require('../../assets/images/19705449574_4b1c9404a9_o.jpg'),
+                thumbnail: require('../../assets/images/19705449574_4b1c9404a9_o.jpg'),
                 w: 900,
                 h: 900,
                 title: 'Having some beers in Brussels, Belgium'
             },
             {
-                src: `${imageDir}/16424735715_976a528d01_o.jpg`,
-                thumbnail: `${imageDir}/16424735715_976a528d01_o.jpg`,
+                src: require('../../assets/images/16424735715_976a528d01_o.jpg'),
+                thumbnail: require('../../assets/images/16424735715_976a528d01_o.jpg'),
                 w: 1200,
                 h: 900,
                 title: 'Snowboard/ski trip to Blue Mountain with some of the pals'
             },
             {
-                src: `${imageDir}/20160702_195910.jpg`,
-                thumbnail: `${imageDir}/20160702_195910.jpg`,
+                src: require('../../assets/images/20160702_195910.jpg'),
+                thumbnail: require('../../assets/images/20160702_195910.jpg'),
                 w: 1200,
                 h: 900,
                 title: 'Anime Expo 2016 after she bought a giant Totoro plushie'
             },
             {
-                src: `${imageDir}/2016-05-20 19.22.19 HDR.jpg`,
-                thumbnail: `${imageDir}/2016-05-20 19.22.19 HDR.jpg`,
+                src: require('../../assets/images/2016-05-20 19.22.19 HDR.jpg'),
+                thumbnail: require('../../assets/images/2016-05-20 19.22.19 HDR.jpg'),
                 w: 1200,
                 h: 900,
                 title: 'Huntington Beach just before eating at Watertable for our second anniversary'
@@ -190,7 +195,7 @@ export default class Home extends Component {
                     <div className={style.content}>
                         <h2>Proposal</h2>
                         <p>On November 25<sup>th</sup>, 2016 after riding our motorcycles through the desert to Zion National Park in Utah and climbing the precarious Angel's Landing trail the question was dropped. She didn't take long to answer ;)</p>
-                        <video className={style.video} src="/assets/videos/proposal.mp4" controls />
+                        <video className={style.video} src={assets.videos.proposal} controls />
                     </div>
                 </section>
                 <section id='photos' className={style.section}>

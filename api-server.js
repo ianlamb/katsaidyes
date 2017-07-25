@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const fs = require('fs');
 const serveStatic = require("serve-static");
+const ENV = process.env.NODE_ENV || 'development';
 
 const SECRET = 'california';
 
@@ -10,7 +11,10 @@ module.exports = (PORT) => {
 
     const app = express();
 
-    app.use(serveStatic('build'));
+    if (ENV === 'production') {
+        app.use(serveStatic('build'));
+    }
+
     app.use(bodyParser.json());
 
     app.get('/api/guestlist', function(req, res) {
