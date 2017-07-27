@@ -61,14 +61,14 @@ export default class Home extends Component {
         }
 
         this.handlePhotoswipeClose = this.handlePhotoswipeClose.bind(this);
-        this.checkScroll = this.checkScroll.bind(this);
+        this.onScroll = this.onScroll.bind(this);
         this.onRsvpBtnClick = this.onRsvpBtnClick.bind(this);
         this.onRsvpMaskClick = this.onRsvpMaskClick.bind(this);
     }
 
     componentDidMount() {
-        this.checkScroll();
-        window.addEventListener('scroll', throttle(this.checkScroll, 50));
+        this.onScroll();
+        window.addEventListener('scroll', throttle(this.onScroll, 50));
 
         setTimeout(() => {
             this.setState({ loadHero: true });
@@ -85,9 +85,10 @@ export default class Home extends Component {
         );
     }
 
-    checkScroll() {
-        return; // disable this for now
+    onScroll() {
+        this.setState({ scrollTop: document.body.scrollTop });
 
+        return; // disable autoplay for now
         const proposalSection = document.getElementById('proposal');
         const video = proposalSection.querySelector('video');
         if (document.body.scrollTop > proposalSection.offsetTop && video.paused && !this.autoPlayStarted) {
@@ -108,7 +109,11 @@ export default class Home extends Component {
     render() {
         return (
             <div className={style.home}>
-                <section id='hero' className={`${style.section} ${style.hero} ${this.state.loadHero ? ' ' + style.showBackground : ''}`}>
+                <section
+                    id='hero'
+                    className={`${style.section} ${style.hero} ${this.state.loadHero ? ' ' + style.showBackground : ''}`}
+                    style={`transform:translateY(${this.state.scrollTop / 6}px)`}
+                    >
                     <div className={style.content}>
                         <h1>
                             Kat
@@ -163,8 +168,8 @@ export default class Home extends Component {
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11683.17951492581!2d-81.461053!3d42.940451!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xafe15d1b42c6651!2sFernwood+Hills!5e0!3m2!1sen!2sus!4v1499657140004"
                             frameborder="0" allowfullscreen></iframe>
 
-                        <h4>Fernwood Hills @ 2:00PM - 4:00PM</h4>
-                        <p>The ceremony will be short and the dress code will be smart casual. It's outside in December, so please wear appropriate clothes to stay warm! There will be coffee, hot chocolate and snacks. Feel free to arrive anytime after 1pm to hang out.</p>
+                        <h4>Fernwood Hills @ 3:00PM - 4:00PM</h4>
+                        <p>The ceremony will be short and the dress code will be smart casual. It's outside in December, so please wear appropriate clothes to stay warm! There will be coffee, hot chocolate and snacks. Feel free to arrive anytime after 2pm to hang out.</p>
 
                         <h5>Gifts</h5>
                         <p>Joining us is all we want, please don't bring gifts! Instead, please consider joining us for a Hawaii destination party after the wedding if you have the means to do so. Details for this will be sorted out on Facebook.</p>
