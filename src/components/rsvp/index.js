@@ -158,6 +158,7 @@ export class RsvpModal extends Component {
 
 		return (
 			<div class={style.rsvpModal + ' ' + (this.props.show ? '' : style.hide)}>
+                <a href='javascript:void(0)' class={style.closeModal} onClick={this.props.closeModal}>&times;</a>
 				<h2>RSVP</h2>
                 <p class={style.infoParagraph}>Please make individual submissions for each person that received an invitation.</p>
 				<form onSubmit={this.onSubmit} id='rsvpForm'>
