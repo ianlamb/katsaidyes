@@ -62,8 +62,8 @@ export default class Home extends Component {
 
         this.handlePhotoswipeClose = this.handlePhotoswipeClose.bind(this);
         this.onScroll = this.onScroll.bind(this);
-        this.onRsvpBtnClick = this.onRsvpBtnClick.bind(this);
-        this.onRsvpMaskClick = this.onRsvpMaskClick.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     componentDidMount() {
@@ -98,11 +98,11 @@ export default class Home extends Component {
         }
     }
 
-    onRsvpBtnClick() {
+    openModal() {
         this.setState({ showRsvpMask: true, showRsvpModal: true });
     }
 
-    onRsvpMaskClick() {
+    closeModal() {
         this.setState({ showRsvpMask: false, showRsvpModal: false });
     }
 
@@ -193,7 +193,7 @@ export default class Home extends Component {
                         <h3>After Party</h3>
                         <p>After dinner everyone is free to take off or join us for some drinks and socializing at a nearby establishment (likely Milos' Craft Beer Emporium).</p>
 
-                        <button class={style.button} onClick={this.onRsvpBtnClick}>RSVP Now</button>
+                        <button class={style.button} onClick={this.openModal}>RSVP Now</button>
                     </div>
                 </section>
                 <section id='proposal' className={style.section}>
@@ -233,8 +233,8 @@ export default class Home extends Component {
                     </div>
                 </section>
 
-                <RsvpMask show={this.state.showRsvpMask} onClick={this.onRsvpMaskClick} />
-                <RsvpModal show={this.state.showRsvpModal} />
+                <RsvpMask show={this.state.showRsvpMask} closeModal={this.closeModal} />
+                <RsvpModal show={this.state.showRsvpModal} closeModal={this.closeModal} />
             </div>
         );
     }

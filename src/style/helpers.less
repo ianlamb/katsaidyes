@@ -20,14 +20,19 @@
     user-select: none;
     background-image: none;
     border-radius: 4px;
-    border: 2px solid @secondary;
-    background: transparent;
-    color: @secondary;
+    background: @primary;
+    border: 2px solid @primary;
+    color: @white;
     transition: all .15s ease-out;
 
     &:hover {
+        color: @primary;
+        background: white;
+    }
+
+    &[disabled] {
         color: @white;
-        border-color: transparent;
-        background: @primary;
+        border-color: @white;
+        background: rgba(0, 0, 0, 0.5);
     }
 }

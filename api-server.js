@@ -48,8 +48,8 @@ module.exports = (PORT) => {
         const dataFile = fs.readFileSync('data.json');
         let guestList = JSON.parse(dataFile);
         let verifiedGuest = guestList.guests.find((guest) => {
-            return reqData.firstName.trim().toLowerCase() ===  guest.firstName.toLowerCase()
-                && reqData.lastName.trim().toLowerCase() ===  guest.lastName.toLowerCase();
+            return reqData.firstName.trim().toLowerCase() === guest.firstName.toLowerCase()
+                && reqData.lastName.trim().toLowerCase() === guest.lastName.toLowerCase();
         });
 
         if (!verifiedGuest) {
@@ -59,6 +59,7 @@ module.exports = (PORT) => {
 
         verifiedGuest.attending = reqData.attending;
         verifiedGuest.extras = reqData.extras;
+        verifiedGuest.comments = reqData.comments;
         fs.writeFile('./data.json', JSON.stringify(guestList, null, 2) , 'utf-8');
         res.sendStatus(200); // OK
     });
