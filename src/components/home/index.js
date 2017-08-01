@@ -86,7 +86,10 @@ export default class Home extends Component {
     }
 
     onScroll() {
-        this.setState({ scrollTop: document.body.scrollTop });
+        const scrollTop = (document.body.scrollTop < window.innerHeight ? document.body.scrollTop : window.innerHeight) / 6;
+        if (scrollTop != this.state.scrollTop) {
+            this.setState({ scrollTop: scrollTop });
+        }
 
         return; // disable autoplay for now
         const proposalSection = document.getElementById('proposal');
@@ -112,7 +115,7 @@ export default class Home extends Component {
                 <section
                     id='hero'
                     className={`${style.section} ${style.hero} ${this.state.loadHero ? ' ' + style.showBackground : ''}`}
-                    style={`transform:translateY(${this.state.scrollTop / 6}px)`}
+                    style={`transform:translateY(${this.state.scrollTop}px)`}
                     >
                     <div className={style.content}>
                         <h1>
