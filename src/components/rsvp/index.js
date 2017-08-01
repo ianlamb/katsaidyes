@@ -31,21 +31,23 @@ export class RsvpModal extends Component {
 
 	onSubmit(event) {
 		event.preventDefault();
-        let stateObject = cloneDeep(this.state);
+
+        let stateObject;
 
         // validate form
         const requiredFields = ['secret', 'firstName', 'lastName', 'attending'];
         const missingFields = requiredFields.find(fieldName => !this.state.form[fieldName]);
         if (missingFields) {
+            stateObject = cloneDeep(this.state);
             stateObject.message = {
                 type: 'error',
                 text: 'Oops, looks like we\'re missing some information. Please fill out the entire form so we know who you are :)'
             }
+            this.setState(stateObject);
             return;
         }
 
-        stateObject.sending = true;
-        this.setState(stateObject);
+        this.setState({ sending: true });
 
         // send it off!
 		const url = '/api/rsvp';
@@ -60,7 +62,6 @@ export class RsvpModal extends Component {
 
 			if (http.readyState == 4) {
                 stateObject.sending = false;
-				console.log(http.responseText);
 				switch(http.status) {
 					case 200:
 						console.log('OK');
