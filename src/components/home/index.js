@@ -24,32 +24,116 @@ export default class Home extends Component {
         };
         this.photos = [
             {
-                src: require('../../assets/images/19705449574_4b1c9404a9_o.jpg'),
-                thumbnail: require('../../assets/images/19705449574_4b1c9404a9_o.jpg'),
+                src: require('../../assets/images/photos/1.jpg'),
+                thumbnail: require('../../assets/images/photos/1.jpg'),
+                w: 1200,
+                h: 900,
+                title: 'Huntington Beach just before eating at Watertable for our second anniversary'
+            },
+            {
+                src: require('../../assets/images/photos/2.jpg'),
+                thumbnail: require('../../assets/images/photos/2.jpg'),
+                w: 1200,
+                h: 900,
+                title: 'BlizzCon 2016 in our costumes (Soldier 76 and D.Va)'
+            },
+            {
+                src: require('../../assets/images/photos/3.jpg'),
+                thumbnail: require('../../assets/images/photos/3.jpg'),
+                w: 944,
+                h: 960,
+                title: 'Premier of the Warcraft movie'
+            },
+            {
+                src: require('../../assets/images/photos/4.jpg'),
+                thumbnail: require('../../assets/images/photos/4.jpg'),
+                w: 1200,
+                h: 900,
+                title: 'Just got engaged on Angel\'s Landing'
+            },
+            {
+                src: require('../../assets/images/photos/5.jpg'),
+                thumbnail: require('../../assets/images/photos/5.jpg'),
                 w: 900,
                 h: 900,
                 title: 'Having some beers in Brussels, Belgium'
             },
             {
-                src: require('../../assets/images/16424735715_976a528d01_o.jpg'),
-                thumbnail: require('../../assets/images/16424735715_976a528d01_o.jpg'),
-                w: 1200,
+                src: require('../../assets/images/photos/6.jpg'),
+                thumbnail: require('../../assets/images/photos/6.jpg'),
+                w: 900,
                 h: 900,
-                title: 'Snowboard/ski trip to Blue Mountain with some of the pals'
+                title: 'Joshua Tree, one of many trips to the desert'
             },
             {
-                src: require('../../assets/images/20160702_195910.jpg'),
-                thumbnail: require('../../assets/images/20160702_195910.jpg'),
+                src: require('../../assets/images/photos/8.jpg'),
+                thumbnail: require('../../assets/images/photos/8.jpg'),
                 w: 1200,
                 h: 900,
                 title: 'Anime Expo 2016 after she bought a giant Totoro plushie'
             },
             {
-                src: require('../../assets/images/2016-05-20 19.22.19 HDR.jpg'),
-                thumbnail: require('../../assets/images/2016-05-20 19.22.19 HDR.jpg'),
+                src: require('../../assets/images/photos/9.jpg'),
+                thumbnail: require('../../assets/images/photos/9.jpg'),
+                w: 1024,
+                h: 576,
+                title: 'Anime North 2014 in our costumes (Sven and Dark Valkyrie Dianna)'
+            },
+            {
+                src: require('../../assets/images/photos/10.jpg'),
+                thumbnail: require('../../assets/images/photos/10.jpg'),
                 w: 1200,
                 h: 900,
-                title: 'Huntington Beach just before eating at Watertable for our second anniversary'
+                title: 'Snowboard/ski trip to Blue Mountain with some of the pals'
+            },
+            {
+                src: require('../../assets/images/photos/11.jpg'),
+                thumbnail: require('../../assets/images/photos/11.jpg'),
+                w: 1200,
+                h: 900,
+                title: 'Our engraved lock we put on Heart Lock Bridge, Paris (before they cut them all off)'
+            },
+            {
+                src: require('../../assets/images/photos/12.jpg'),
+                thumbnail: require('../../assets/images/photos/12.jpg'),
+                w: 1200,
+                h: 900,
+                title: 'Heart Lock Bridge, Paris'
+            },
+            {
+                src: require('../../assets/images/photos/13.jpg'),
+                thumbnail: require('../../assets/images/photos/13.jpg'),
+                w: 1200,
+                h: 900,
+                title: 'The Colosseum, Rome'
+            },
+            {
+                src: require('../../assets/images/photos/14.jpg'),
+                thumbnail: require('../../assets/images/photos/14.jpg'),
+                w: 1200,
+                h: 900,
+                title: 'Pre-engagement photo on Angel\'s Landing'
+            },
+            {
+                src: require('../../assets/images/photos/15.jpg'),
+                thumbnail: require('../../assets/images/photos/15.jpg'),
+                w: 900,
+                h: 1200,
+                title: 'Rep\'ing Canada at Tomorrowland, 2015'
+            },
+            {
+                src: require('../../assets/images/photos/16.jpg'),
+                thumbnail: require('../../assets/images/photos/16.jpg'),
+                w: 1200,
+                h: 900,
+                title: 'Kat at the South Rim, Grand Canyon'
+            },
+            {
+                src: require('../../assets/images/photos/17.jpg'),
+                thumbnail: require('../../assets/images/photos/17.jpg'),
+                w: 900,
+                h: 1200,
+                title: 'Ready to start our day-trip to San Francisco'
             }
         ];
 
