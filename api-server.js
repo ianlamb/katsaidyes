@@ -4,8 +4,6 @@ const fs = require('fs');
 const serveStatic = require("serve-static");
 const ENV = process.env.NODE_ENV || 'development';
 
-const SECRET = 'california';
-
 module.exports = (PORT) => {
     PORT = PORT || 8181;
 
@@ -31,35 +29,52 @@ module.exports = (PORT) => {
         res.json(guestList);
     });
 
-    app.post('/api/rsvp', function(req, res) {
+    app.post('/api/guest', function(req, res) {
         const reqData = req.body;
         console.log('Request Data:', reqData);
 
-        if (!reqData.secret || !reqData.firstName || !reqData.lastName || !reqData.attending) {
+        if (!reqData.email) {
             res.sendStatus(400); // Bad Request
             return;
         }
 
-        if (reqData.secret.trim().toLowerCase() !== SECRET) {
-            res.sendStatus(403); // Forbidden
+        const dataFile = fs.readFileSync('data.json');
+        const guestList = JSON.parse(dataFile);
+        const guest = guestList.guests.find(o => o.email === reqData.email);
+
+        if (!guest) {
+            res.sendStatus(404); // Not Found
+            return;
+        }
+
+        res.json({
+            email: guest.email,
+            firstName: guest.firstName,
+            lastName: guest.lastName
+        });
+    });
+
+    app.post('/api/rsvp', function(req, res) {
+        const reqData = req.body;
+        console.log('Request Data:', reqData);
+
+        if (!reqData.email || !reqData.firstName || !reqData.lastName || !reqData.attending) {
+            res.sendStatus(400); // Bad Request
             return;
         }
 
         const dataFile = fs.readFileSync('data.json');
-        let guestList = JSON.parse(dataFile);
-        let verifiedGuest = guestList.guests.find((guest) => {
-            return reqData.firstName.trim().toLowerCase() === guest.firstName.toLowerCase()
-                && reqData.lastName.trim().toLowerCase() === guest.lastName.toLowerCase();
-        });
+        const guestList = JSON.parse(dataFile);
+        const guest = guestList.guests.find(o => o.email === reqData.email);
 
-        if (!verifiedGuest) {
-            res.sendStatus(418); // I'm a teapot
+        if (!guest) {
+            res.sendStatus(404); // Not Found
             return;
         }
 
-        verifiedGuest.attending = reqData.attending;
-        verifiedGuest.extras = reqData.extras;
-        verifiedGuest.comments = reqData.comments;
+        guest.attending = reqData.attending;
+        guest.extras = reqData.extras;
+        guest.comments = reqData.comments;
         fs.writeFile('./data.json', JSON.stringify(guestList, null, 2) , 'utf-8');
         res.sendStatus(200); // OK
     });

@@ -8,13 +8,13 @@ export class RsvpModal extends Component {
 
         this.state = {
             message: null, // { type, text }
-            secretFilled: false,
+            emailFilled: false,
             firstNameFilled: false,
             lastNameFilled: false,
             responded: false,
             sending: false,
             form: {
-                secret: '',
+                email: '',
                 firstName: '',
                 lastName: '',
                 attending: '',
@@ -35,7 +35,7 @@ export class RsvpModal extends Component {
         let stateObject;
 
         // validate form
-        const requiredFields = ['secret', 'firstName', 'lastName', 'attending'];
+        const requiredFields = ['email', 'firstName', 'lastName', 'attending'];
         const missingFields = requiredFields.find(fieldName => !this.state.form[fieldName]);
         if (missingFields) {
             stateObject = cloneDeep(this.state);
@@ -85,8 +85,8 @@ export class RsvpModal extends Component {
                             text: 'It seems like the answer you provided to the first question was incorrect. Please make sure you type the full name of the state (no abbreviation). If you continue getting this message contact us at ianlamb32@gmail.com'
                         }
 						break;
-					case 418:
-						console.warn('I\'m a teapot');
+					case 404:
+						console.warn('Not Found');
                         stateObject.message = {
                             type: 'error',
                             text: 'We could not find you on the guest list. Please make sure the details you entered above are correct and try again, or contact us at ianlamb32@gmail.com'
@@ -110,13 +110,41 @@ export class RsvpModal extends Component {
 		}
         let stateObject = cloneDeep(this.state);
         stateObject.form[name] = value;
+
         if (name === 'extras') {
-            stateObject.form.extras = (value ? 1 : 0);
+            stateObject.form.extras = parseInt(value, 10);
+        }
+
+        if (name === 'attending' && stateObject.form.attending === 'no') {
+            // ensure extras is set to 0 if the user checks it then selects 'not attending'
+            stateObject.form.extras = 0;
+        }
+
+        if (name === 'email') {
+		    this.checkEmail(value);
         }
 
         console.log(stateObject);
 		this.setState(stateObject);
 	}
+
+    checkEmail(email) {
+        const url = '/api/guest';
+        let data = JSON.stringify({ email });
+        let http = new XMLHttpRequest();
+        http.open('POST', url, true);
+        http.setRequestHeader('Content-type', 'application/json');
+        http.onreadystatechange = () => {
+            if (http.readyState == 4 && http.status == 200) {
+                let guest = JSON.parse(http.responseText);
+                let stateObject = cloneDeep(this.state);
+                stateObject.form.firstName = guest.firstName;
+                stateObject.form.lastName = guest.lastName;
+                this.setState(stateObject);
+			}
+        }
+        http.send(data);
+    }
 
     onFocus(event) {
         let stateProp = event.target.id + 'Filled';
@@ -163,16 +191,16 @@ export class RsvpModal extends Component {
 				<h2>RSVP</h2>
                 <p class={style.infoParagraph}>Please make individual submissions for each person that received an invitation.</p>
 				<form onSubmit={this.onSubmit} id='rsvpForm'>
-					<div class={`${style.formGroup} ${style.text} ${this.state.secretFilled || this.state.form.secret ? style.filled : ''}`}>
-						<input type='text' name='secret' id='secret' class={style.textInput} value={this.state.form.secret} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
-						<label class={style.label} for='secret'><span class={style.labelContent}>Which state did Ian and Kat move to last year?</span></label>
+					<div class={`${style.formGroup} ${style.text} ${this.state.emailFilled || this.state.form.email ? style.filled : ''}`}>
+						<input type='text' name='email' id='email' class={style.textInput} value={this.state.form.email} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
+						<label class={style.label} for='email'><span class={style.labelContent}>Email</span></label>
 					</div>
 					<div class={`${style.formGroup} ${style.twoColumn} ${style.text} ${this.state.firstNameFilled || this.state.form.firstName ? style.filled : ''}`}>
-						<input type='text' name='firstName' id='firstName' class={style.textInput} value={this.state.form.firstName} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
+						<input type='text' name='firstName' id='firstName' class={style.textInput} value={this.state.form.firstName} onFocus={this.onFocus} onBlur={this.onBlur} disabled />
 						<label class={style.label} for='firstName'><span class={style.labelContent}>First Name</span></label>
 					</div>
 					<div class={`${style.formGroup} ${style.twoColumn} ${style.text} ${this.state.lastNameFilled || this.state.form.lastName ? style.filled : ''}`}>
-						<input type='text' name='lastName' id='lastName' class={style.textInput} value={this.state.form.lastName} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
+						<input type='text' name='lastName' id='lastName' class={style.textInput} value={this.state.form.lastName} onFocus={this.onFocus} onBlur={this.onBlur} disabled />
 						<label class={style.label} for='lastName'><span class={style.labelContent}>Last Name</span></label>
 					</div>
 					<div class={style.formGroup}>

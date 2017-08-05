@@ -90,10 +90,14 @@
     font-family: @inputFontStack;
     -webkit-appearance: none;
     outline: none;
+
+    &[disabled] {
+        color: @darkGray;
+    }
 }
 
 label {
-    color: #454545;
+    color: @darkGray;
     font-size: 1.2rem;
     font-weight: bold;
 }
