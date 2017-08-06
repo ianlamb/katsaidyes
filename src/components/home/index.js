@@ -244,11 +244,11 @@ export default class Home extends Component {
                         </h1>
                     </div>
                 </section>
-                <section id='details' className={style.section}>
+                <section id='details' className={`${style.section} ${style.patternBackground}`}>
                     <div className={style.content}>
                         <h2>Wedding Details</h2>
                         <h3 className={style.important}>Saturday December 23rd, 2017<br />London, ON, Canada</h3>
-                        <p>The wedding will be small. We truly love and appreciate the support of all of our friends, but the invitation list won't be long.</p>
+                        <p>We're getting married! We want our wedding to be light-hearted and stress-free, so don't expect any of <a href="https://www.youtube.com/watch?v=O5BeLinyfpg" target="_blank">this</a>. It's going to be a fun get-together with friends and family to celebrate love and life! Thank you so much to everyone who joins us, and if you are not able to you'll be with us in spirit :)</p>
 
                         <h3>Ceremony</h3>
                         <iframe
@@ -290,7 +290,7 @@ export default class Home extends Component {
                         <video className={style.video} src={assets.videos.proposal} controls />
                     </div>
                 </section>
-                <section id='photos' className={style.section}>
+                <section id='photos' className={`${style.section} ${style.patternBackground}`}>
                     <div className={style.content}>
                         <h2>Photos</h2>
                         <p>We think our adventures speak to our companionship better than anything, so instead of traditional engagement photos here are some of our favourite in-the-moment shots (quality may vary).</p>

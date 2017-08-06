@@ -16,6 +16,17 @@ html, body {
 	box-sizing: border-box;
 }
 
+a {
+    color: @primary;
+    text-decoration: none;
+    transition: color .2s ease-out;
+
+    &:hover {
+        color: @gray;
+        transition: color .2s ease-out;
+    }
+}
+
 #app {
 	height: 100%;
 }
