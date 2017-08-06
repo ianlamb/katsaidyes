@@ -72,6 +72,11 @@
     &.twoColumn {
         width: ~"calc(50% - 2em)";
     }
+
+    &.checkboxGroup {
+        margin-top: -0.5rem;
+        margin-bottom: 2rem;
+    }
 }
 
 .textInput {
@@ -85,15 +90,11 @@
     border-radius: 0;
     font-size: 1.4rem;
     background: transparent;
-    color: @primary;
+    color: @darkGray;
     font-weight: bold;
     font-family: @inputFontStack;
     -webkit-appearance: none;
     outline: none;
-
-    &[disabled] {
-        color: @darkGray;
-    }
 }
 
 label {
@@ -147,6 +148,10 @@ label {
         .filled & {
             -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
+        }
+
+        .unverified & {
+            border-color: @secondary;
         }
     }
 }
@@ -255,7 +260,7 @@ textarea {
     max-width: 100%;
     height: 5.4rem;
     outline: none;
-    color: @primary;
+    color: @darkGray;
     font-weight: bold;
     font-size: 1.2rem;
     font-family: @inputFontStack;
@@ -291,4 +296,11 @@ textarea {
     margin: 0 5px;
     color: #333;
     text-decoration: none;
+}
+
+.stepTwo {
+
+    &.hidden {
+        display: none;
+    }
 }

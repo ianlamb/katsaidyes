@@ -35,4 +35,26 @@
         border-color: @white;
         background: rgba(0, 0, 0, 0.5);
     }
+
+    &.secondary {
+        background-color: @gray;
+        border-color: @gray;
+
+        &:hover {
+            color: @gray;
+            background: white;
+        }
+    }
+}
+
+.buttonGroup {
+    text-align: center;
+
+    .button {
+        display: inline-block;
+
+        &:not(:last-of-type) {
+            margin-right: 1rem;
+        }
+    }
 }

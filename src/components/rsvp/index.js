@@ -1,16 +1,16 @@
 import { h, Component } from 'preact';
 import style from './style.less';
 import cloneDeep from 'lodash/cloneDeep';
+import debounce from 'lodash/debounce';
 
 export class RsvpModal extends Component {
 	constructor() {
         super();
 
-        this.state = {
+        this.defaultState = {
             message: null, // { type, text }
+            emailVerified: false,
             emailFilled: false,
-            firstNameFilled: false,
-            lastNameFilled: false,
             responded: false,
             sending: false,
             form: {
@@ -23,10 +23,13 @@ export class RsvpModal extends Component {
             }
         };
 
+        this.state = cloneDeep(this.defaultState);
+
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onInputChange = this.onInputChange.bind(this);
 		this.onFocus = this.onFocus.bind(this);
 		this.onBlur = this.onBlur.bind(this);
+		this.reset = this.reset.bind(this);
     }
 
 	onSubmit(event) {
@@ -67,7 +70,7 @@ export class RsvpModal extends Component {
 						console.log('OK');
                         stateObject.message = {
                             type: 'info',
-                            text: 'Thanks for responding! <3'
+                            text: 'Thanks for responding! Remember to make individual submissions for each person that received an invitation <3'
                         }
                         stateObject.responded = true;
 						break;
@@ -120,12 +123,12 @@ export class RsvpModal extends Component {
             stateObject.form.extras = 0;
         }
 
+        console.log(stateObject);
+		this.setState(stateObject);
+
         if (name === 'email') {
 		    this.checkEmail(value);
         }
-
-        console.log(stateObject);
-		this.setState(stateObject);
 	}
 
     checkEmail(email) {
@@ -135,12 +138,21 @@ export class RsvpModal extends Component {
         http.open('POST', url, true);
         http.setRequestHeader('Content-type', 'application/json');
         http.onreadystatechange = () => {
-            if (http.readyState == 4 && http.status == 200) {
-                let guest = JSON.parse(http.responseText);
-                let stateObject = cloneDeep(this.state);
-                stateObject.form.firstName = guest.firstName;
-                stateObject.form.lastName = guest.lastName;
-                this.setState(stateObject);
+            if (http.readyState == 4) {
+                if (http.status == 200) {
+                    let guest = JSON.parse(http.responseText);
+                    let stateObject = cloneDeep(this.state);
+                    stateObject.emailVerified = true;
+                    stateObject.form.firstName = guest.firstName;
+                    stateObject.form.lastName = guest.lastName;
+                    this.setState(stateObject);
+                } else {
+                    let stateObject = cloneDeep(this.state);
+                    stateObject.emailVerified = false;
+                    stateObject.form.firstName = '';
+                    stateObject.form.lastName = '';
+                    this.setState(stateObject);
+                }
 			}
         }
         http.send(data);
@@ -164,6 +176,14 @@ export class RsvpModal extends Component {
         }
     }
 
+    reset() {
+        const stateObject = cloneDeep(this.defaultState);
+        this.setState(stateObject);
+
+        // I know, I know, very un-react-like...
+        document.getElementById('email').value = '';
+    }
+
 	render() {
         let userMessage;
         if (this.state.message) {
@@ -177,11 +197,16 @@ export class RsvpModal extends Component {
         let cta;
         if (this.state.responded) {
             cta = (
-                <button type='button' class={style.button} disabled={this.state.sending} onClick={this.props.closeModal}>Done</button>
+                <div class={style.buttonGroup}>
+                    <button type='button' class={style.button} onClick={this.props.closeModal}>Done</button>
+                    <button type='button' class={`${style.button} ${style.secondary}`} onClick={this.reset}>Reset</button>
+                </div>
             );
         } else {
             cta = (
-                <button type='submit' class={style.button} disabled={this.state.sending}>Confirm</button>
+                <div class={style.buttonGroup}>
+                    <button type='submit' class={style.button} disabled={this.state.sending}>Confirm</button>
+                </div>
             );
         }
 
@@ -189,43 +214,44 @@ export class RsvpModal extends Component {
 			<div class={style.rsvpModal + ' ' + (this.props.show ? '' : style.hide)}>
                 <a href='javascript:void(0)' class={style.closeModal} onClick={this.props.closeModal}>&times;</a>
 				<h2>RSVP</h2>
-                <p class={style.infoParagraph}>Please make individual submissions for each person that received an invitation.</p>
+                <p class={style.infoParagraph}>
+                    Enter your email address so we can verify who you are.<br />
+                    If you experience any issues with this, please contact us.
+                </p>
 				<form onSubmit={this.onSubmit} id='rsvpForm'>
-					<div class={`${style.formGroup} ${style.text} ${this.state.emailFilled || this.state.form.email ? style.filled : ''}`}>
-						<input type='text' name='email' id='email' class={style.textInput} value={this.state.form.email} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} />
+					<div class={`${style.formGroup} ${style.text} ${this.state.emailFilled || this.state.form.email ? style.filled : ''} ${this.state.emailVerified ? '' : style.unverified}`}>
+						<input type='text' name='email' id='email' class={style.textInput} onFocus={this.onFocus} onBlur={this.onBlur} onKeyUp={debounce(this.onInputChange, 250)} />
 						<label class={style.label} for='email'><span class={style.labelContent}>Email</span></label>
 					</div>
-					<div class={`${style.formGroup} ${style.twoColumn} ${style.text} ${this.state.firstNameFilled || this.state.form.firstName ? style.filled : ''}`}>
-						<input type='text' name='firstName' id='firstName' class={style.textInput} value={this.state.form.firstName} onFocus={this.onFocus} onBlur={this.onBlur} disabled />
-						<label class={style.label} for='firstName'><span class={style.labelContent}>First Name</span></label>
-					</div>
-					<div class={`${style.formGroup} ${style.twoColumn} ${style.text} ${this.state.lastNameFilled || this.state.form.lastName ? style.filled : ''}`}>
-						<input type='text' name='lastName' id='lastName' class={style.textInput} value={this.state.form.lastName} onFocus={this.onFocus} onBlur={this.onBlur} disabled />
-						<label class={style.label} for='lastName'><span class={style.labelContent}>Last Name</span></label>
-					</div>
-					<div class={style.formGroup}>
-                        <label>Will you be attending?</label>
-						<label>
-							<input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='yes' checked={this.state.form.attending === 'yes'} onChange={this.onInputChange} />
-							Yes
-						</label>
-						<label>
-							<input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='no' checked={this.state.form.attending === 'no'} onChange={this.onInputChange} />
-							No
-						</label>
-					</div>
-					<div class={`${style.formGroup} ${this.state.form.attending !== 'yes' ? style.hideOption : ''}`}>
-						<label>
-							<input type='checkbox' class={style.optionInput + ' ' + style.checkbox} name='extras' value='1' checked={this.state.form.extras} onChange={this.onInputChange} />
-							Are you bringing a +1 that did not receive an invitation?
-						</label>
-					</div>
-					<div class={`${style.formGroup}`}>
-						<label>Comments (optional)</label>
-                        <textarea name='comments' value={this.state.form.comments} onChange={this.onInputChange}></textarea>
-					</div>
-					{ userMessage }
-                    { cta }
+                    <div class={`${style.stepTwo} ${this.state.emailVerified ? '' : style.hidden}`}>
+                        <div class={`${style.formGroup} ${style.text} ${this.state.form.firstName ? style.filled : ''}`}>
+                            <input type='text' name='name' id='name' class={style.textInput} value={`${this.state.form.firstName} ${this.state.form.lastName}`} onFocus={this.onFocus} onBlur={this.onBlur} disabled />
+                            <label class={style.label} for='name'><span class={style.labelContent}>Guest Name</span></label>
+                        </div>
+                        <div class={style.formGroup}>
+                            <label>Will you be attending?</label>
+                            <label>
+                                <input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='yes' checked={this.state.form.attending === 'yes'} onChange={this.onInputChange} />
+                                Yes
+                            </label>
+                            <label>
+                                <input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='no' checked={this.state.form.attending === 'no'} onChange={this.onInputChange} />
+                                No
+                            </label>
+                        </div>
+                        <div class={`${style.formGroup} ${style.checkboxGroup} ${this.state.form.attending !== 'yes' ? style.hideOption : ''}`}>
+                            <label>
+                                <input type='checkbox' class={style.optionInput + ' ' + style.checkbox} name='extras' value='1' checked={this.state.form.extras} onChange={this.onInputChange} />
+                                Are you bringing a +1 that did not receive an invitation?
+                            </label>
+                        </div>
+                        <div class={`${style.formGroup}`}>
+                            <label>Comments (optional)</label>
+                            <textarea name='comments' value={this.state.form.comments} onChange={this.onInputChange}></textarea>
+                        </div>
+                        { userMessage }
+                        { cta }
+                    </div>
 				</form>
 			</div>
 		);
