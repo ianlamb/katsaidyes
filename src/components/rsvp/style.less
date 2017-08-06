@@ -22,7 +22,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 640px;
+    width: 100%;
     height: auto;
     max-height: 100vh;
     overflow-y: auto;
@@ -38,6 +38,10 @@
     h2 {
         margin: 0;
         text-align: center;
+    }
+
+    @media (min-width: 640px) {
+        width: 640px;
     }
 }
 
@@ -166,6 +170,23 @@ label {
 
     .filled & {
         transform: translateY(-1.2em);
+    }
+}
+
+.optionLabel {
+    display: block;
+    position: relative;
+    padding-left: 55px;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    font-size: 1.4rem;
+
+    > input {
+        position: absolute;
+    }
+
+    @media (min-width: 640px) {
+        display: inline-block;
     }
 }
 

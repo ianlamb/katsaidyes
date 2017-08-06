@@ -230,18 +230,18 @@ export class RsvpModal extends Component {
                         </div>
                         <div class={style.formGroup}>
                             <label>Will you be attending?</label>
-                            <label>
+                            <label class={style.optionLabel}>
                                 <input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='yes' checked={this.state.form.attending === 'yes'} onChange={this.onInputChange} />
                                 Yes
                             </label>
-                            <label>
+                            <label class={style.optionLabel}>
                                 <input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='no' checked={this.state.form.attending === 'no'} onChange={this.onInputChange} />
                                 No
                             </label>
                         </div>
                         <div class={`${style.formGroup} ${style.checkboxGroup} ${this.state.form.attending !== 'yes' ? style.hideOption : ''}`}>
-                            <label>
-                                <input type='checkbox' class={style.optionInput + ' ' + style.checkbox} name='extras' value='1' checked={this.state.form.extras} onChange={this.onInputChange} />
+                            <label class={style.optionLabel}>
+                                <input type='checkbox' class={style.optionInput} name='extras' value='1' checked={this.state.form.extras} onChange={this.onInputChange} />
                                 Are you bringing a +1 that did not receive an invitation?
                             </label>
                         </div>
