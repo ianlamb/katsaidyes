@@ -220,7 +220,7 @@ export class RsvpModal extends Component {
                 </p>
 				<form onSubmit={this.onSubmit} id='rsvpForm'>
 					<div class={`${style.formGroup} ${style.text} ${this.state.emailFilled || this.state.form.email ? style.filled : ''} ${this.state.emailVerified ? '' : style.unverified}`}>
-						<input type='text' name='email' id='email' class={style.textInput} onFocus={this.onFocus} onBlur={this.onBlur} onKeyUp={debounce(this.onInputChange, 250)} />
+						<input type='text' name='email' id='email' class={style.textInput} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} onKeyUp={debounce(this.onInputChange, 250)} />
 						<label class={style.label} for='email'><span class={style.labelContent}>Email</span></label>
 					</div>
                     <div class={`${style.stepTwo} ${this.state.emailVerified ? '' : style.hidden}`}>

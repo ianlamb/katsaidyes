@@ -4,6 +4,12 @@ const fs = require('fs');
 const serveStatic = require("serve-static");
 const ENV = process.env.NODE_ENV || 'development';
 
+function sanitizeEmail(email) {
+    let parts = email.toLowerCase().split('@');
+    parts[0] = parts[0].replace(/\./g, '');
+    return parts.join('@');
+}
+
 module.exports = (PORT) => {
     PORT = PORT || 8181;
 
@@ -38,9 +44,10 @@ module.exports = (PORT) => {
             return;
         }
 
+        // TODO cache data file
         const dataFile = fs.readFileSync('data.json');
         const guestList = JSON.parse(dataFile);
-        const guest = guestList.guests.find(o => o.email === reqData.email);
+        const guest = guestList.guests.find(o => sanitizeEmail(o.email) === sanitizeEmail(reqData.email));
 
         if (!guest) {
             res.sendStatus(404); // Not Found

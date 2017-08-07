@@ -1,10 +1,13 @@
 {
   "guests": [
     {
+      "email": "ianlamb32@gmail.com",
       "firstName": "Ian",
       "lastName": "Lamb",
+      "category": 0,
       "attending": "yes",
-      "extras": 0
+      "extras": 0,
+      "comments": "This is a comment"
     }
   ]
 }
