@@ -32,6 +32,22 @@ export class RsvpModal extends Component {
 		this.reset = this.reset.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.email) {
+            // not react-like
+            const emailInput = document.getElementById('email');
+            emailInput.value = nextProps.email;
+            let evt = document.createEvent("HTMLEvents");
+            evt.initEvent("change", false, true);
+            emailInput.dispatchEvent(evt);
+
+            // update state object
+            let stateObject = cloneDeep(this.state);
+            stateObject.form.email = nextProps.email;
+            this.setState(stateObject);
+        }
+    }
+
 	onSubmit(event) {
 		event.preventDefault();
 
@@ -180,7 +196,9 @@ export class RsvpModal extends Component {
         const stateObject = cloneDeep(this.defaultState);
         this.setState(stateObject);
 
-        // I know, I know, very un-react-like...
+        this.props.onReset();
+
+        // not react-like
         document.getElementById('email').value = '';
     }
 
@@ -214,7 +232,7 @@ export class RsvpModal extends Component {
 			<div class={style.rsvpModal + ' ' + (this.props.show ? '' : style.hide)}>
                 <a href='javascript:void(0)' class={style.closeModal} onClick={this.props.closeModal}>&times;</a>
 				<h2>RSVP</h2>
-                <p class={style.infoParagraph}>
+                <p class={`${style.infoParagraph} ${this.state.emailVerified ? style.hide : ''}`}>
                     Enter your email address so we can verify who you are.<br />
                     If you experience any issues with this, please contact us.
                 </p>

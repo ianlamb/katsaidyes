@@ -82,6 +82,8 @@ module.exports = (PORT) => {
         guest.attending = reqData.attending;
         guest.extras = reqData.extras;
         guest.comments = reqData.comments;
+
+        // possible race condition if two requests come in at the same time, hopefully that doesn't happen
         fs.writeFile('./data.json', JSON.stringify(guestList, null, 2) , 'utf-8');
         res.sendStatus(200); // OK
     });

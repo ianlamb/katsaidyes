@@ -4,6 +4,7 @@ import 'react-photoswipe/lib/photoswipe.css';
 import { PhotoSwipeGallery } from 'react-photoswipe';
 import { RsvpMask, RsvpModal } from '../rsvp';
 import throttle from 'lodash/throttle';
+import url from 'url';
 
 const imageDir = '../../assets/images';
 const heroFadeInDelay = 250;
@@ -138,6 +139,7 @@ export default class Home extends Component {
         ];
 
         this.state = {
+            emailPrefill: '',
             loadHero: false,
             showRsvpMask: false,
             showRsvpModal: false,
@@ -148,6 +150,18 @@ export default class Home extends Component {
         this.onScroll = this.onScroll.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.onModalReset = this.onModalReset.bind(this);
+    }
+
+    componentWillMount() {
+        const email = url.parse(window.location.href, true).query.e;
+        if (email) {
+            this.setState({
+                emailPrefill: email,
+                showRsvpMask: true,
+                showRsvpModal: true
+            })
+        }
     }
 
     componentDidMount() {
@@ -191,6 +205,12 @@ export default class Home extends Component {
 
     closeModal() {
         this.setState({ showRsvpMask: false, showRsvpModal: false });
+    }
+
+    onModalReset() {
+        this.setState({
+            emailPrefill: ''
+        });
     }
 
     render() {
@@ -321,7 +341,7 @@ export default class Home extends Component {
                 </section>
 
                 <RsvpMask show={this.state.showRsvpMask} closeModal={this.closeModal} />
-                <RsvpModal show={this.state.showRsvpModal} closeModal={this.closeModal} />
+                <RsvpModal show={this.state.showRsvpModal} email={this.state.emailPrefill} onReset={this.onModalReset} closeModal={this.closeModal} />
             </div>
         );
     }
