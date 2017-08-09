@@ -32,8 +32,15 @@ a {
 }
 
 // Photoswipe
+.pswp-thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .pswp-thumbnail {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
     width: 100px;
     height: 100px;
     margin: 0 10px 10px 0;
@@ -41,5 +48,8 @@ a {
 }
 
 .pswp-thumbnail img {
-    max-width: 100%
+    max-width: 100px;
+    max-height: 100px;
+    display: block;
+    margin: 0 auto;
 }
