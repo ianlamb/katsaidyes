@@ -91,6 +91,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "lodash": "^4.17.4",
+    "nodemailer": "^4.0.1",
     "preact": "^8.1.0",
     "preact-compat": "^3.13.1",
     "preact-render-to-string": "^3.6.0",
