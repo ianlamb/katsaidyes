@@ -6,6 +6,8 @@ import { RsvpMask, RsvpModal } from '../rsvp';
 import throttle from 'lodash/throttle';
 import url from 'url';
 import photoData from './photos';
+import Reveal from 'react-reveal';
+import 'animate.css/animate.css';
 
 const imageDir = '../../assets/images';
 const heroFadeInDelay = 250;
