@@ -208,16 +208,8 @@ p {
     }
 
     &.footer {
-        background: #454443;
+        background: #333;
         color: #efefef;
-
-        a {
-            color: #41d2ff;
-
-            &:hover {
-                color: #41a2ef;
-            }
-        }
 
         .content {
             background: transparent;
@@ -250,23 +242,8 @@ p {
         }
     }
 
-    &:not(:last-of-type) {
-        .content {
-            // horizontal section divider
-            &:after {
-                content: '';
-                position: absolute;
-                left: 1.5rem;
-                right: 1.5rem;
-                bottom: -3px;
-                height: 3px;
-                background: transparent;
-                border-top: 2px solid;
-                border-bottom: 2px solid;
-                border-color: rgba(0, 0, 0, 0.5);
-                z-index: 10;
-            }
-        }
+    &:not(:last-of-type):not(:first-of-type) {
+        border-bottom: 4px solid @primary;
     }
 }
 
@@ -293,6 +270,7 @@ iframe {
     top: 2rem;
     margin-bottom: 2rem;
     text-align: center;
+    font-size: 1.4rem;
 }
 
 
