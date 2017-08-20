@@ -55,7 +55,7 @@ module.exports = {
 				test: /\.(less|css)$/,
 				include: [path.resolve(__dirname, 'src/components')],
 				loader: ExtractTextPlugin.extract('style?singleton', [
-					`css-loader?modules&importLoaders=1&sourceMap=${CSS_MAPS}`,
+					`css-loader?modules&importLoaders=1&localIdentName=[path][name]---[local]---[hash:base64:5]&sourceMap=${CSS_MAPS}`,
 					`postcss-loader`,
 					`less-loader?sourceMap=${CSS_MAPS}`
 				].join('!'))
