@@ -179,7 +179,7 @@ export default class Home extends Component {
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <h4>Fernwood Hills @ 2:00PM - 3:00PM</h4>
-                            <p>The ceremony will be short and the dress code will be smart casual. It's outside in December, so please wear appropriate clothes to stay warm! There will be coffee, hot chocolate and snacks. Feel free to arrive anytime after 2pm to hang out.</p>
+                            <p>The ceremony will be short and the dress code will be smart casual. It's outside in December, so please wear appropriate clothes to stay warm! There will be coffee, hot chocolate and snacks. Feel free to arrive anytime after 1pm to hang out.</p>
                         </Reveal>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
