@@ -10,6 +10,17 @@ function sanitizeEmail(email) {
     return parts.join('@');
 }
 
+function auth(req, res, next) {
+    const secret = process.env.SECRET;
+    const reqSecret = req.query.secret;
+    console.log('[AUTH] Secret: %s, reqSecret: %s', secret, reqSecret);
+    if (secret !== undefined && reqSecret !== secret) {
+        res.sendStatus(403);
+        return;
+    }
+    next();
+}
+
 module.exports = (PORT) => {
     PORT = PORT || 8181;
 
@@ -21,15 +32,15 @@ module.exports = (PORT) => {
 
     app.use(bodyParser.json());
 
-    app.get('/api/guestlist', function(req, res) {
+    app.get('/api/guestlist', auth, function(req, res) {
         const dataFile = fs.readFileSync('data.json');
         let guestList = JSON.parse(dataFile);
         guestList.simpleList = guestList.guests.map((o) => o.firstName + ' ' + o.lastName);
         guestList._total = guestList.guests.length;
-        guestList._responded = guestList.guests.filter((o) => o.attending).length;
+        guestList._responded = guestList.guests.filter((o) => o.responses).length;
         guestList._attending = guestList.guests.filter((o) => o.attending === 'yes').length;
         guestList._extras = guestList.guests.reduce((a, o, i) => {
-            return a + o.extras;
+            return a + (o.extras || 0);
         }, 0);
         guestList._responsePercentage = Math.floor(guestList._responded / guestList._total * 100);
         res.json(guestList);
@@ -82,6 +93,7 @@ module.exports = (PORT) => {
         guest.attending = reqData.attending;
         guest.extras = reqData.extras;
         guest.comments = reqData.comments;
+        guest.responses = guest.responses ? (guest.responses + 1) : 1;
 
         // possible race condition if two requests come in at the same time, hopefully that doesn't happen
         fs.writeFile('./data.json', JSON.stringify(guestList, null, 2) , 'utf-8');
