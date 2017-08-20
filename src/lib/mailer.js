@@ -26,24 +26,65 @@ class Mailer {
 
         const dataFile = fs.readFileSync('../data.json');
         const guestList = JSON.parse(dataFile);
-        console.log('Guestlist:', guestList.guests);
         const emailToList = guestList.guests.filter(o => o.category === category).map(o => o.email);
         console.log('Emails found in category:', emailToList);
 
-        let addNote = '';
-        if (category === 3) { // Cali friends
-            addNote = `
+        let honorary = '';
+        if (category === 4) { // bridesmaids
+            honorary = `
                 <tr>
-                    <td style="padding:0 20px;color:#41d2ff;font-style:italic;">
-                        <p><b>Note to our California friends</b>: We are formally extending this invite, but we do not expect any of you to fly 2,000 miles to watch a 15 minute wedding ceremony. Please consider joining us for the destination wedding party instead. Details will follow on Facebook.</p>
+                    <td style="padding:0 20px;color:#41d2ff;font-weight:bold;">
+                        <p>Congratulations! You were selected to be one of Kat's Bridesmaids. We are honored to have you by our side for this special moment.</p>
+                    </td>
+                </tr>
+            `;
+        } else if (category === 5) { // maid of honor
+            honorary = `
+                <tr>
+                    <td style="padding:0 20px;color:#41d2ff;font-weight:bold;">
+                        <p>Congratulations! You have been Math.random()'ly selected to be Ian's Best Man! Just kidding about the random part, I am absolutely honored to have you by my side for this moment of my life. Love you man.</p>
+                    </td>
+                </tr>
+            `;
+        } else if (category === 6) { // groomsmen
+            honorary = `
+                <tr>
+                    <td style="padding:0 20px;color:#41d2ff;font-weight:bold;">
+                        <p>Congratulations! You were selected to be one of Ian's Groomsmen. We are honored to have you by our side for this special moment.</p>
+                    </td>
+                </tr>
+            `;
+        } else if (category === 7) { // best man
+            honorary = `
+                <tr>
+                    <td style="padding:0 20px;color:#41d2ff;font-weight:bold;">
+                        <p>Congratulations! You have been Math.random()'ly selected to be Ian's Best Man! Just kidding about the random part, I am absolutely honored to have you by my side for this special moment. Love you man.</p>
                     </td>
                 </tr>
             `;
         }
 
-        let promises = [];
-        emailToList.forEach((emailTo) => {
-            this.sendInvite(emailTo, addNote);
+        let note = '';
+        if (category === 3) { // international friends
+            note = `
+                <tr>
+                    <td style="padding:0 20px;color:#41d2ff;font-style:italic;">
+                        <p><b>Note to our international friends</b>: We are formally extending this invite, but we do not expect any of you to fly 2,000 miles to watch a 15 minute wedding ceremony. Please consider joining us for the destination wedding party instead. Details will follow on Facebook.</p>
+                    </td>
+                </tr>
+            `;
+        } else if ([0, 4, 5, 6, 7].indexOf(category) !== -1) { // bridesmaids / groomsmen
+            note = `
+                <tr>
+                    <td style="padding:0 20px;color:#41d2ff;font-style:italic;">
+                        <p><b>Note to our Bridesmaids &amp; Groomsmen</b>: We are still figuring out pre-ceremony gatherings. Please make yourself available a couple hours before the ceremony and we will keep you informed as plans formulate :)</p>
+                    </td>
+                </tr>
+            `;
+        }
+
+        const promises = emailToList.map((emailTo) => {
+            return this.sendInvite(emailTo, honorary, note);
         });
         return Promise.all(promises);
     }
@@ -52,7 +93,7 @@ class Mailer {
      * 
      * @param {string} emailTo - Email address to send the invitation to.
      */
-    sendInvite(emailTo, addNote) {
+    sendInvite(emailTo, honorary, note) {
         const dataFile = fs.readFileSync('../data.json');
         const guestList = JSON.parse(dataFile);
         console.log('Emailing To: %s', emailTo);
@@ -65,7 +106,7 @@ class Mailer {
             text: `
                 Katherine Haldane and Ian Lamb request the honor of your presence at their wedding.
                 
-                SATURDAY - DECEMBER 23, 2017 - 3:00 PM
+                SATURDAY - DECEMBER 23, 2017 - 2:00 PM
                 FERNWOOD HILLS
                 9533 OXBOW DR - KOMOKA, ONTARIO, CANADA
 
@@ -89,10 +130,11 @@ class Mailer {
                             <p style="font-size:24px;"><b><i>Katherine Haldane</i></b> and <b><i>Ian Lamb</i></b> request the honor of your presence at their wedding.</p>
                         </td>
                     </tr>
+                    ${honorary}
                     <tr>
                         <td style="padding:0 20px;font-weight:bold;">
                             <p>
-                                SATURDAY &#9672; DECEMBER 23, 2017 &#9672; 3:00 PM
+                                SATURDAY &#9672; DECEMBER 23, 2017 &#9672; 2:00 PM
                                 <br />
                                 FERNWOOD HILLS
                                 <br />
@@ -115,7 +157,7 @@ class Mailer {
                             <p>Please RSVP by <b>September 30<sup>th</sup></b>. You can respond now by <a href="http://katsaidyes.ianlamb.com?e=${emailTo}" style="color:#f90;text-decoration:none;">clicking this special link</a> or by filling out the form yourself on our website.</p>
                         </td>
                     </tr>
-                    ${addNote}
+                    ${note}
                     <tr>
                         <td>&nbsp;</td>
                     </tr>

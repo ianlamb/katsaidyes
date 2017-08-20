@@ -1,4 +1,14 @@
 {
+  "categories": {
+      "0": "Bride & Groom",
+      "1": "Family",
+      "2": "Canadian Friends",
+      "3": "International Friends",
+      "4": "Bridesmaids",
+      "5": "Maid of Honor",
+      "6": "Groomsmen",
+      "7": "Best Man"
+  },
   "guests": [
     {
       "email": "ianlamb32@gmail.com",

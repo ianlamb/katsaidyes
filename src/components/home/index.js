@@ -165,7 +165,7 @@ export default class Home extends Component {
                             frameborder="0" allowfullscreen></iframe>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
-                            <h4>Fernwood Hills @ 3:00PM - 4:00PM</h4>
+                            <h4>Fernwood Hills @ 2:00PM - 3:00PM</h4>
                             <p>The ceremony will be short and the dress code will be smart casual. It's outside in December, so please wear appropriate clothes to stay warm! There will be coffee, hot chocolate and snacks. Feel free to arrive anytime after 2pm to hang out.</p>
                         </Reveal>
 
@@ -189,7 +189,7 @@ export default class Home extends Component {
                             frameborder="0" allowfullscreen></iframe>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
-                            <h4>Black Trumpet @ 5:00PM - 8:00PM</h4>
+                            <h4>Black Trumpet @ 4:00PM - 7:00PM</h4>
                             <p>The restaurant is downtown so please arrange for transportation from the venue and allow some time to find parking. Approximate driving time from Fernwood Hills to Downtown London is 25-30 minutes. Everyone will be able to choose their menu options at the restaurant. Alcohol will not be included with the dinner, but will be available for purchase.</p>
                         </Reveal>
 
