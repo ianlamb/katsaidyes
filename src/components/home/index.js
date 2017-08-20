@@ -102,7 +102,7 @@ export default class Home extends Component {
                     style={`transform:translateY(${this.state.scrollTop}px)`}
                     >
                     <div className={style.content}>
-                        <h1>
+                        <h1 class={`${style.animated} ${style.fadeInUp}`}>
                             Kat
                             <span class={style.engagementIcon}>
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 496 496" style="enable-background:new 0 0 496 496;">
@@ -227,7 +227,7 @@ export default class Home extends Component {
                             <h2>Photos</h2>
                         </Reveal>
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
-                            <p>We think our adventures speak to our companionship better than anything, so instead of traditional engagement photos here are some of our favourite in-the-moment shots (quality may vary).</p>
+                            <p>We think our adventures speak to our companionship more than anything, so here are some of our favourite photos in no particular order.</p>
                         </Reveal>
 
                         <PhotoSwipeGallery

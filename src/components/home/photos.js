@@ -3,6 +3,20 @@ const thumbSize = 100;
 
 export default [
     {
+        src: require(`../../assets/images/photos/4-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/4-${thumbSize}.jpg`),
+        w: 800,
+        h: 600,
+        title: `Moments following engagement on top of Angel's Landing, Zion National Park`
+    },
+    {
+        src: require(`../../assets/images/photos/27-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/27-${thumbSize}.jpg`),
+        w: 450,
+        h: 800,
+        title: `Kat\`s Sapphire engagement ring`
+    },
+    {
         src: require(`../../assets/images/photos/1-${srcSize}.jpg`),
         thumbnail: require(`../../assets/images/photos/1-${thumbSize}.jpg`),
         w: 800,
@@ -21,28 +35,14 @@ export default [
         thumbnail: require(`../../assets/images/photos/3-${thumbSize}.jpg`),
         w: 786,
         h: 800,
-        title: `Premier of the Warcraft movie`
-    },
-    {
-        src: require(`../../assets/images/photos/4-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/4-${thumbSize}.jpg`),
-        w: 800,
-        h: 600,
-        title: `Just got engaged on Angel\`s Landing`
+        title: `Premier of the Warcraft movie at Edwards Irvine Spectrum`
     },
     {
         src: require(`../../assets/images/photos/5-${srcSize}.jpg`),
         thumbnail: require(`../../assets/images/photos/5-${thumbSize}.jpg`),
         w: 800,
         h: 800,
-        title: `Having some beers in Brussels, Belgium`
-    },
-    {
-        src: require(`../../assets/images/photos/6-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/6-${thumbSize}.jpg`),
-        w: 600,
-        h: 800,
-        title: `Joshua Tree, one of many trips to the desert`
+        title: `Having some delicious beer in Brussels, Belgium`
     },
     {
         src: require(`../../assets/images/photos/8-${srcSize}.jpg`),
@@ -55,8 +55,8 @@ export default [
         src: require(`../../assets/images/photos/9-${srcSize}.jpg`),
         thumbnail: require(`../../assets/images/photos/9-${thumbSize}.jpg`),
         w: 800,
-        h: 450,
-        title: `Anime North 2014 in our costumes (Sven and Dark Valkyrie Dianna)`
+        h: 533,
+        title: `Anime North 2014 in our costumes (Iron Drakken Sven and Dark Valkyrie Dianna)`
     },
     {
         src: require(`../../assets/images/photos/10-${srcSize}.jpg`),
@@ -85,13 +85,6 @@ export default [
         w: 800,
         h: 600,
         title: `The Colosseum, Rome`
-    },
-    {
-        src: require(`../../assets/images/photos/14-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/14-${thumbSize}.jpg`),
-        w: 800,
-        h: 529,
-        title: `Pre-engagement photo on Angel's Landing`
     },
     {
         src: require(`../../assets/images/photos/15-${srcSize}.jpg`),
@@ -133,14 +126,14 @@ export default [
         thumbnail: require(`../../assets/images/photos/20-${thumbSize}.jpg`),
         w: 800,
         h: 800,
-        title: `BlizzCon 2016`
+        title: `Cosplay crew, BlizzCon 2016`
     },
     {
         src: require(`../../assets/images/photos/21-${srcSize}.jpg`),
         thumbnail: require(`../../assets/images/photos/21-${thumbSize}.jpg`),
         w: 600,
         h: 800,
-        title: `Anime Expo 2016`
+        title: `Cosplay crew, Anime Expo 2016`
     },
     {
         src: require(`../../assets/images/photos/22-${srcSize}.jpg`),
@@ -169,13 +162,6 @@ export default [
         w: 800,
         h: 600,
         title: `One of our many adventures to Joshua Tree National Park, California`
-    },
-    {
-        src: require(`../../assets/images/photos/27-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/27-${thumbSize}.jpg`),
-        w: 800,
-        h: 450,
-        title: `Kat\`s Sapphire engagement ring`
     },
     {
         src: require(`../../assets/images/photos/28-${srcSize}.jpg`),
@@ -217,7 +203,7 @@ export default [
         thumbnail: require(`../../assets/images/photos/33-${thumbSize}.jpg`),
         w: 800,
         h: 600,
-        title: `Dante\`s View in Death Valley National Park, California`
+        title: `Dante's View in Death Valley National Park, California`
     },
     {
         src: require(`../../assets/images/photos/34-${srcSize}.jpg`),
@@ -236,9 +222,9 @@ export default [
     {
         src: require(`../../assets/images/photos/36-${srcSize}.jpg`),
         thumbnail: require(`../../assets/images/photos/36-${thumbSize}.jpg`),
-        w: 800,
-        h: 600,
-        title: `Kat and Julie at the Ripley\`s Aquarium, Toronto`
+        w: 600,
+        h: 800,
+        title: `Kat showing Julie around Huntington Beach, California`
     },
     {
         src: require(`../../assets/images/photos/37-${srcSize}.jpg`),
@@ -252,7 +238,7 @@ export default [
         thumbnail: require(`../../assets/images/photos/38-${thumbSize}.jpg`),
         w: 533,
         h: 800,
-        title: `Kat and Julian at a christmas party(?)`
+        title: `Kat and Julian at a christmas party`
     },
     {
         src: require(`../../assets/images/photos/39-${srcSize}.jpg`),
@@ -260,5 +246,40 @@ export default [
         w: 800,
         h: 600,
         title: `Bijou being adorable`
+    },
+    {
+        src: require(`../../assets/images/photos/40-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/40-${thumbSize}.jpg`),
+        w: 800,
+        h: 600,
+        title: `First ascent in Joshua Tree National Park`
+    },
+    {
+        src: require(`../../assets/images/photos/41-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/41-${thumbSize}.jpg`),
+        w: 800,
+        h: 529,
+        title: `The Lamb family enjoying a typical day at Marg's island cottage on Lake Nipissing, Ontario`
+    },
+    {
+        src: require(`../../assets/images/photos/42-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/42-${thumbSize}.jpg`),
+        w: 800,
+        h: 600,
+        title: `Adventures with Derek and Julide in Joshua Tree National Park`
+    },
+    {
+        src: require(`../../assets/images/photos/43-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/43-${thumbSize}.jpg`),
+        w: 800,
+        h: 600,
+        title: `Connor joins us for adventures in Big Bear, California`
+    },
+    {
+        src: require(`../../assets/images/photos/44-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/44-${thumbSize}.jpg`),
+        w: 800,
+        h: 533,
+        title: `The Haldane family at Chris and Angela's wedding`
     }
 ];
