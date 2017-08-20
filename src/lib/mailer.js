@@ -67,7 +67,7 @@ class Mailer {
                 
                 SATURDAY - DECEMBER 23, 2017 - 3:00 PM
                 FERNWOOD HILLS
-                9533 OXBOW DR - MIDDLESEX CENTRE, ONTARIO N0L 1R0, CANADA
+                9533 OXBOW DR - KOMOKA, ONTARIO, CANADA
 
                 For more details about the wedding including dress code, dinner plans and after party - please visit our website at http://katsaidyes.ianlamb.com
 
@@ -96,7 +96,7 @@ class Mailer {
                                 <br />
                                 FERNWOOD HILLS
                                 <br />
-                                9533 OXBOW DR &#9672; MIDDLESEX CENTRE, ONTARIO N0L 1R0, CANADA
+                                9533 OXBOW DR &#9672; KOMOKA, ONTARIO, CANADA
                             </p>
                         </td>
                     </tr>

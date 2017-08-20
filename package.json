@@ -89,7 +89,6 @@
     "webpack-dev-server": "^1.15.0"
   },
   "dependencies": {
-    "animate.css": "^3.5.2",
     "body-parser": "^1.17.1",
     "commander": "^2.11.0",
     "lodash": "^4.17.4",
