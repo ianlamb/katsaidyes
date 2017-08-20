@@ -81,7 +81,7 @@ p {
 .heartIcon {
     display: block;
     width: 8rem;
-    margin: 5rem auto 0;
+    margin: 0 auto 0;
 
     svg {
         fill: @secondary;
@@ -93,6 +93,8 @@ p {
 }
 
 .section {
+    @overlayColor: rgba(255, 255, 255, 0.80);
+
     position: relative;
     padding: 0;
     text-align: left;
@@ -102,7 +104,7 @@ p {
         max-width: 960px;
         padding: 4rem 1.5rem;
         margin: 0 auto;
-        background: rgba(255, 255, 255, 0.85);
+        background: @overlayColor;
     }
 
     @media (min-width: 768px) {
@@ -119,14 +121,12 @@ p {
             // left side fade-to-white
             &:before {
                 right: ~"calc(50% + 480px)";
-                // background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
-                background: rgba(255, 255, 255, 0.85);
+                background: @overlayColor;
             }
             // right side fade-to-white
             &:after {
                 left: ~"calc(50% + 480px)";
-                // background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
-                background: rgba(255, 255, 255, 0.85);
+                background: @overlayColor;
             }
         }
     }
@@ -200,23 +200,33 @@ p {
         }
     }
 
-    &:nth-of-type(2) {
-        
-    }
-    &:nth-of-type(3) {
+    &.proposal {
         background-image: url('../../assets/images/kat_angels_landing.jpg');
         background-position: bottom;
         background-repeat: no-repeat;
         background-size: cover;
     }
-    &:nth-of-type(4) {
-        
-    }
-    &:nth-of-type(5) {
-        background-image: url('../../assets/images/sand_heart.jpg');
-        background-position: center -150px;
-        background-repeat: no-repeat;
-        background-size: cover;
+
+    &.footer {
+        background: #454443;
+        color: #efefef;
+
+        a {
+            color: #41d2ff;
+
+            &:hover {
+                color: #41a2ef;
+            }
+        }
+
+        .content {
+            background: transparent;
+        }
+
+        &:before,
+        &:after {
+            display: none;
+        }
     }
 
     &.patternBackground {
@@ -281,7 +291,7 @@ iframe {
 .footerText {
     position: relative;
     top: 2rem;
-    margin-bottom: 10rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 

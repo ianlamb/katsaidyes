@@ -219,7 +219,7 @@ export default class Home extends Component {
                         </Reveal>
                     </div>
                 </section>
-                <section id='proposal' className={style.section}>
+                <section id='proposal' className={`${style.section} ${style.proposal}`}>
                     <div className={style.content}>
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <h2>Proposal</h2>
@@ -250,7 +250,7 @@ export default class Home extends Component {
                     </div>
                 </section>
 
-                <section id='footer' className={style.section}>
+                <section id='footer' className={`${style.section} ${style.footer}`}>
                     <div className={style.content}>
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <span class={style.heartIcon}>
