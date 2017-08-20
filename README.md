@@ -182,3 +182,14 @@ This project includes [preact-compat] alias in as `react` and `react-dom` right 
 ## License
 
 MIT
+
+### Live Ops
+
+These are personal instructions for myself, everyone else can ignore them...
+
+Don't forget to setup data.json on server, then:
+
+```
+nvm use v8.1.3
+PORT=8282 NODE_ENV=production SECRET={it's a secret} forever start index.js
+```

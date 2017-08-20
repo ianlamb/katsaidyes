@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const fs = require('fs');
-const serveStatic = require("serve-static");
+const serveStatic = require('serve-static');
+const debounce = require('lodash/debounce');
 const ENV = process.env.NODE_ENV || 'development';
+const DATA_FILE = process.env.DATA_FILE || 'data.json';
 
 function sanitizeEmail(email) {
     let parts = email.toLowerCase().split('@');
@@ -32,9 +34,20 @@ module.exports = (PORT) => {
 
     app.use(bodyParser.json());
 
+    // memory cache of guest list on server start
+    const dataFile = fs.readFileSync(DATA_FILE);
+    let guestList = JSON.parse(dataFile);
+
+    // allows for batch saving of guestList
+    function persistData() {
+        console.log('Writing data...', DATA_FILE);
+        fs.writeFile(DATA_FILE, JSON.stringify(guestList, null, 2) , 'utf-8', () => {
+            console.log('Data saved!', DATA_FILE);
+        });
+    }
+
+    // only for administration
     app.get('/api/guestlist', auth, function(req, res) {
-        const dataFile = fs.readFileSync('data.json');
-        let guestList = JSON.parse(dataFile);
         guestList.simpleList = guestList.guests.map((o) => o.firstName + ' ' + o.lastName);
         guestList._total = guestList.guests.length;
         guestList._responded = guestList.guests.filter((o) => o.responses).length;
@@ -46,18 +59,16 @@ module.exports = (PORT) => {
         res.json(guestList);
     });
 
+    // used by the rsvp form to verify guest email
     app.post('/api/guest', function(req, res) {
         const reqData = req.body;
-        console.log('Request Data:', reqData);
+        console.log('[/api/guest] Request Data:', reqData);
 
         if (!reqData.email) {
             res.sendStatus(400); // Bad Request
             return;
         }
 
-        // TODO cache data file
-        const dataFile = fs.readFileSync('data.json');
-        const guestList = JSON.parse(dataFile);
         const guest = guestList.guests.find(o => sanitizeEmail(o.email) === sanitizeEmail(reqData.email));
 
         if (!guest) {
@@ -72,17 +83,16 @@ module.exports = (PORT) => {
         });
     });
 
+    // used by the rsvp form to submit a response
     app.post('/api/rsvp', function(req, res) {
         const reqData = req.body;
-        console.log('Request Data:', reqData);
+        console.log('[/api/rsvp] Request Data:', reqData);
 
         if (!reqData.email || !reqData.firstName || !reqData.lastName || !reqData.attending) {
             res.sendStatus(400); // Bad Request
             return;
         }
 
-        const dataFile = fs.readFileSync('data.json');
-        const guestList = JSON.parse(dataFile);
         const guest = guestList.guests.find(o => o.email === reqData.email);
 
         if (!guest) {
@@ -95,8 +105,7 @@ module.exports = (PORT) => {
         guest.comments = reqData.comments;
         guest.responses = guest.responses ? (guest.responses + 1) : 1;
 
-        // possible race condition if two requests come in at the same time, hopefully that doesn't happen
-        fs.writeFile('./data.json', JSON.stringify(guestList, null, 2) , 'utf-8');
+        debounce(persistData, 1000, { maxWait: 5000 })(); // immediately invoke debounce func
         res.sendStatus(200); // OK
     });
 
