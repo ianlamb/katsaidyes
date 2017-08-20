@@ -2,7 +2,7 @@ import { h, Component } from 'preact';
 import style from './style.less';
 import 'react-photoswipe/lib/photoswipe.css';
 import { PhotoSwipeGallery } from 'react-photoswipe';
-import { RsvpMask, RsvpModal } from '../rsvp';
+import { RsvpModal } from '../rsvp';
 import throttle from 'lodash/throttle';
 import url from 'url';
 import photoData from './photos';
@@ -25,11 +25,11 @@ export default class Home extends Component {
 
         this.photoswipeOptions = {};
         this.photos = photoData;
+        this.modalOffset = 0;
 
         this.state = {
             emailPrefill: '',
             loadHero: false,
-            showRsvpMask: false,
             showRsvpModal: false,
             isPhotoswipeOpen: false,
             scrollTop: 0
@@ -47,7 +47,6 @@ export default class Home extends Component {
         if (email) {
             this.setState({
                 emailPrefill: email,
-                showRsvpMask: true,
                 showRsvpModal: true
             })
         }
@@ -88,13 +87,17 @@ export default class Home extends Component {
     }
 
     openModal() {
+        this.modalOffset = document.body.scrollTop;
         document.body.style.position = 'fixed';
-        this.setState({ showRsvpMask: true, showRsvpModal: true });
+        document.body.style.marginTop = `-${this.modalOffset}px`;
+        this.setState({ showRsvpModal: true });
     }
 
     closeModal() {
-        document.body.style.position = 'relative';
-        this.setState({ showRsvpMask: false, showRsvpModal: false });
+        document.body.style.removeProperty('position');
+        document.body.style.removeProperty('margin-top');
+        document.body.scrollTop = this.modalOffset;
+        this.setState({ showRsvpModal: false });
     }
 
     onModalReset() {
@@ -271,7 +274,6 @@ export default class Home extends Component {
                     </div>
                 </section>
 
-                <RsvpMask show={this.state.showRsvpMask} closeModal={this.closeModal} />
                 <RsvpModal show={this.state.showRsvpModal} email={this.state.emailPrefill} onReset={this.onModalReset} closeModal={this.closeModal} />
             </div>
         );

@@ -232,6 +232,7 @@ export class RsvpModal extends Component {
 
 		return (
 			<div class={style.rsvpModal + ' ' + (this.props.show ? '' : style.hide)}>
+                <div class={style.rsvpMask + ' ' + (this.props.show ? '' : style.hide)} onClick={this.props.closeModal}></div>
                 <div class={style.modalContent}>
                     <a href='javascript:void(0)' class={style.closeModal} onClick={this.props.closeModal}>&times;</a>
                     <h2>RSVP</h2>
@@ -282,14 +283,6 @@ export class RsvpModal extends Component {
                     </form>
                 </div>
 			</div>
-		);
-	}
-}
-
-export class RsvpMask extends Component {
-	render() {
-		return (
-			<div class={style.rsvpMask + ' ' + (this.props.show ? '' : style.hide)} onClick={this.props.closeModal}></div>
 		);
 	}
 }
