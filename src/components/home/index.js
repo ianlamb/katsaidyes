@@ -20,11 +20,10 @@ export default class Home extends Component {
     constructor() {
         super();
 
-        this.autoPlayStarted = false;
+        // turning off parallax
+        this.parallax = false;
 
-        this.photoswipeOptions = {
-
-        };
+        this.photoswipeOptions = {};
         this.photos = photoData;
 
         this.state = {
@@ -32,7 +31,8 @@ export default class Home extends Component {
             loadHero: false,
             showRsvpMask: false,
             showRsvpModal: false,
-            isPhotoswipeOpen: false
+            isPhotoswipeOpen: false,
+            scrollTop: 0
         }
 
         this.handlePhotoswipeClose = this.handlePhotoswipeClose.bind(this);
@@ -51,6 +51,10 @@ export default class Home extends Component {
                 showRsvpModal: true
             })
         }
+
+        // if (navigator.appName == 'Microsoft Internet Explorer' || !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/))) {
+        //     this.parallax = false;
+        // }
     }
 
     componentDidMount() {
@@ -73,6 +77,10 @@ export default class Home extends Component {
     }
 
     onScroll() {
+        if (!this.parallax) {
+            return;
+        }
+
         const scrollTop = (document.body.scrollTop < window.innerHeight ? document.body.scrollTop : window.innerHeight) / 6;
         if (scrollTop != this.state.scrollTop) {
             this.setState({ scrollTop: scrollTop });

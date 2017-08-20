@@ -69,6 +69,7 @@ p {
 
 .engagementIcon svg {
     height: 5rem;
+    width: 6rem;
     margin: 0 1rem;
     fill: @secondary;
 
@@ -142,6 +143,9 @@ p {
         will-change: transform;
         transition: transform 500ms;
 
+        // turning off parallax
+        transform: none !important;
+
         .content {
             background: transparent;
 
@@ -160,6 +164,9 @@ p {
             bottom: 0;
             z-index: 1;
             opacity: 0;
+
+            // turning off parallax
+            position: absolute;
         }
 
         // hero background image
