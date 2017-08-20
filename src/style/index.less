@@ -38,13 +38,35 @@ a {
 }
 
 .pswp-thumbnail {
+    @margin: 10px;
+
     display: inline-flex;
     flex-direction: row;
     align-items: center;
-    width: 100px;
+    width: ~"calc(50% - @{margin})";
     height: 100px;
-    margin: 0 10px 10px 0;
+    margin: 0 @margin/2 15px @margin/2;
     cursor: pointer;
+
+    @media (min-width: 420px) {
+        width: ~"calc(33.3% - @{margin})";
+    }
+
+    @media (min-width: 540px) {
+        width: ~"calc(25% - @{margin})";
+    }
+
+    @media (min-width: 660px) {
+        width: ~"calc(20% - @{margin})";
+    }
+
+    @media (min-width: 768px) {
+        width: ~"calc(16.6% - @{margin})";
+    }
+
+    @media (min-width: 960px) {
+        width: ~"calc(14.2% - @{margin})";
+    }
 }
 
 .pswp-thumbnail img {
