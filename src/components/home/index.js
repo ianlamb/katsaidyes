@@ -162,7 +162,7 @@ export default class Home extends Component {
 
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11683.17951492581!2d-81.461053!3d42.940451!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xafe15d1b42c6651!2sFernwood+Hills!5e0!3m2!1sen!2sus!4v1499657140004"
-                            frameborder="0" allowfullscreen></iframe>
+                            class={style.googleMapEmbed} frameborder="0" allowfullscreen></iframe>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <h4>Fernwood Hills @ 2:00PM - 3:00PM</h4>
@@ -186,7 +186,7 @@ export default class Home extends Component {
 
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3461.9861734855726!2d-81.25318868434042!3d42.98760390323119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882ef20261fba639%3A0xbf4fc4817311727e!2sBlack+Trumpet+Restaurant!5e1!3m2!1sen!2sus!4v1499657370393"
-                            frameborder="0" allowfullscreen></iframe>
+                            class={style.googleMapEmbed} frameborder="0" allowfullscreen></iframe>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <h4>Black Trumpet @ 4:00PM - 7:00PM</h4>
