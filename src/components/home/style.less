@@ -136,7 +136,7 @@ p {
     }
 
     &.hero {
-        background: #444;
+        background: #333;
         color: @white !important;
         min-height: 100vh;
         padding: 10rem 0;
@@ -174,10 +174,11 @@ p {
             background-image: url('../../assets/images/cover.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: top 100px left -400px;
 
             @media (min-width: 768px) {
                 top: -300px;
+                background-position: center;
             }
         }
 
