@@ -3,7 +3,7 @@ import style from './style.less';
 import cloneDeep from 'lodash/cloneDeep';
 import debounce from 'lodash/debounce';
 
-const VERIFY_EMAIL_DEBOUNCE = 150;
+const VERIFY_EMAIL_DEBOUNCE = 200;
 
 export class RsvpModal extends Component {
 	constructor() {
@@ -240,7 +240,13 @@ export class RsvpModal extends Component {
                 </p>
 				<form onSubmit={this.onSubmit} id='rsvpForm'>
 					<div class={`${style.formGroup} ${style.text} ${this.state.emailFilled || this.state.form.email ? style.filled : ''} ${this.state.emailVerified ? '' : style.unverified}`}>
-						<input type='text' name='email' id='email' class={style.textInput} onFocus={this.onFocus} onBlur={this.onBlur} onChange={this.onInputChange} onKeyUp={debounce(this.onInputChange, VERIFY_EMAIL_DEBOUNCE)} />
+						<input
+                            type='text' name='email' id='email' class={style.textInput}
+                            onFocus={this.onFocus}
+                            onBlur={this.onBlur}
+                            onChange={debounce(this.onInputChange, VERIFY_EMAIL_DEBOUNCE)}
+                            onInput={debounce(this.onInputChange, VERIFY_EMAIL_DEBOUNCE)}
+                            onKeyUp={debounce(this.onInputChange, VERIFY_EMAIL_DEBOUNCE)} />
 						<label class={style.label} for='email'><span class={style.labelContent}>Email</span></label>
 					</div>
                     <div class={`${style.stepTwo} ${this.state.emailVerified ? '' : style.hidden}`}>
