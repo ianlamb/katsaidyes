@@ -88,10 +88,12 @@ export default class Home extends Component {
     }
 
     openModal() {
+        document.body.style.position = 'fixed';
         this.setState({ showRsvpMask: true, showRsvpModal: true });
     }
 
     closeModal() {
+        document.body.style.position = 'relative';
         this.setState({ showRsvpMask: false, showRsvpModal: false });
     }
 

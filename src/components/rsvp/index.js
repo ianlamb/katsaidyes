@@ -232,53 +232,55 @@ export class RsvpModal extends Component {
 
 		return (
 			<div class={style.rsvpModal + ' ' + (this.props.show ? '' : style.hide)}>
-                <a href='javascript:void(0)' class={style.closeModal} onClick={this.props.closeModal}>&times;</a>
-				<h2>RSVP</h2>
-                <p class={`${style.infoParagraph} ${this.state.emailVerified ? style.hide : ''}`}>
-                    Enter your email address so we can verify who you are.<br />
-                    If you experience any issues with this, please contact us.
-                </p>
-				<form onSubmit={this.onSubmit} id='rsvpForm'>
-					<div class={`${style.formGroup} ${style.text} ${this.state.emailFilled || this.state.form.email ? style.filled : ''} ${this.state.emailVerified ? '' : style.unverified}`}>
-						<input
-                            type='text' name='email' id='email' class={style.textInput}
-                            onFocus={this.onFocus}
-                            onBlur={this.onBlur}
-                            onChange={debounce(this.onInputChange, VERIFY_EMAIL_DEBOUNCE)}
-                            onInput={debounce(this.onInputChange, VERIFY_EMAIL_DEBOUNCE)}
-                            onKeyUp={debounce(this.onInputChange, VERIFY_EMAIL_DEBOUNCE)} />
-						<label class={style.label} for='email'><span class={style.labelContent}>Email</span></label>
-					</div>
-                    <div class={`${style.stepTwo} ${this.state.emailVerified ? '' : style.hidden}`}>
-                        <div class={`${style.formGroup} ${style.text} ${this.state.form.firstName ? style.filled : ''}`}>
-                            <input type='text' name='name' id='name' class={style.textInput} value={`${this.state.form.firstName} ${this.state.form.lastName}`} onFocus={this.onFocus} onBlur={this.onBlur} disabled />
-                            <label class={style.label} for='name'><span class={style.labelContent}>Guest Name</span></label>
+                <div class={style.modalContent}>
+                    <a href='javascript:void(0)' class={style.closeModal} onClick={this.props.closeModal}>&times;</a>
+                    <h2>RSVP</h2>
+                    <p class={`${style.infoParagraph} ${this.state.emailVerified ? style.hide : ''}`}>
+                        Enter your email address so we can verify who you are.<br />
+                        If you experience any issues with this, please contact us.
+                    </p>
+                    <form onSubmit={this.onSubmit} id='rsvpForm'>
+                        <div class={`${style.formGroup} ${style.text} ${this.state.emailFilled || this.state.form.email ? style.filled : ''} ${this.state.emailVerified ? '' : style.unverified}`}>
+                            <input
+                                type='text' name='email' id='email' class={style.textInput}
+                                onFocus={this.onFocus}
+                                onBlur={this.onBlur}
+                                onChange={debounce(this.onInputChange, VERIFY_EMAIL_DEBOUNCE)}
+                                onInput={debounce(this.onInputChange, VERIFY_EMAIL_DEBOUNCE)}
+                                onKeyUp={debounce(this.onInputChange, VERIFY_EMAIL_DEBOUNCE)} />
+                            <label class={style.label} for='email'><span class={style.labelContent}>Email</span></label>
                         </div>
-                        <div class={style.formGroup}>
-                            <label>Will you be attending?</label>
-                            <label class={style.optionLabel}>
-                                <input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='yes' checked={this.state.form.attending === 'yes'} onChange={this.onInputChange} />
-                                Yes
-                            </label>
-                            <label class={style.optionLabel}>
-                                <input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='no' checked={this.state.form.attending === 'no'} onChange={this.onInputChange} />
-                                No
-                            </label>
+                        <div class={`${style.stepTwo} ${this.state.emailVerified ? '' : style.hidden}`}>
+                            <div class={`${style.formGroup} ${style.text} ${this.state.form.firstName ? style.filled : ''}`}>
+                                <input type='text' name='name' id='name' class={style.textInput} value={`${this.state.form.firstName} ${this.state.form.lastName}`} onFocus={this.onFocus} onBlur={this.onBlur} disabled />
+                                <label class={style.label} for='name'><span class={style.labelContent}>Guest Name</span></label>
+                            </div>
+                            <div class={style.formGroup}>
+                                <label>Will you be attending?</label>
+                                <label class={style.optionLabel}>
+                                    <input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='yes' checked={this.state.form.attending === 'yes'} onChange={this.onInputChange} />
+                                    Yes
+                                </label>
+                                <label class={style.optionLabel}>
+                                    <input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='no' checked={this.state.form.attending === 'no'} onChange={this.onInputChange} />
+                                    No
+                                </label>
+                            </div>
+                            <div class={`${style.formGroup} ${style.checkboxGroup} ${this.state.form.attending !== 'yes' ? style.hideOption : ''}`}>
+                                <label class={style.optionLabel}>
+                                    <input type='checkbox' class={style.optionInput} name='extras' value='1' checked={this.state.form.extras} onChange={this.onInputChange} />
+                                    Are you bringing a +1 that did not receive an invitation?
+                                </label>
+                            </div>
+                            <div class={`${style.formGroup}`}>
+                                <label>Comments (optional)</label>
+                                <textarea name='comments' value={this.state.form.comments} onChange={this.onInputChange}></textarea>
+                            </div>
+                            { userMessage }
+                            { cta }
                         </div>
-                        <div class={`${style.formGroup} ${style.checkboxGroup} ${this.state.form.attending !== 'yes' ? style.hideOption : ''}`}>
-                            <label class={style.optionLabel}>
-                                <input type='checkbox' class={style.optionInput} name='extras' value='1' checked={this.state.form.extras} onChange={this.onInputChange} />
-                                Are you bringing a +1 that did not receive an invitation?
-                            </label>
-                        </div>
-                        <div class={`${style.formGroup}`}>
-                            <label>Comments (optional)</label>
-                            <textarea name='comments' value={this.state.form.comments} onChange={this.onInputChange}></textarea>
-                        </div>
-                        { userMessage }
-                        { cta }
-                    </div>
-				</form>
+                    </form>
+                </div>
 			</div>
 		);
 	}
