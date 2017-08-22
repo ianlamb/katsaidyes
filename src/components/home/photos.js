@@ -17,8 +17,8 @@ export default [
         title: `Kat\`s Sapphire engagement ring`
     },
     {
-        src: require(`../../assets/images/photos/44-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/44-${thumbSize}.jpg`),
+        src: require(`../../assets/images/photos/46-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/46-${thumbSize}.jpg`),
         w: 800,
         h: 600,
         title: `The orc statue in the middle of Blizzard Entertainment HQ, the whole reason we moved down to California`
