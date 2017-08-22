@@ -28,6 +28,7 @@ export default class Home extends Component {
         this.photos = photoData;
         this.modalOffset = 0;
         this.weddingDate = new Date('2017-12-23T19:00:00Z');
+        this.countdownMessage = 'The ceremony has begun! Congrats on having this page open when it happened!';
 
         this.state = {
             emailPrefill: '',
@@ -153,7 +154,7 @@ export default class Home extends Component {
                             Ian
                         </h1>
                     </div>
-                    <Countdown endDate={this.weddingDate} className={style.countdown} />
+                    <Countdown endDate={this.weddingDate} endMessage={this.countdownMessage} className={style.countdown} />
                 </section>
                 <section id='details' className={`${style.section} ${style.patternBackground}`}>
                     <div className={style.content}>

@@ -6,6 +6,7 @@ export default class Countdown extends Component {
         super();
 
         this.state = {
+            ready: false,
             timeString: ''
         };
 
@@ -14,23 +15,36 @@ export default class Countdown extends Component {
 
     get defaultProps() {
         return {
-            endDate: new Date()
+            endDate: new Date(),
+            callback: Function.prototype,
+            endMessage: ''
         }
     }
 
-    componentWillMount() {
-        this.update();
+    componentDidMount() {
+        if (this.props.endDate.getTime() > new Date().getTime()) {
+            this.setState({
+                ready: true
+            });
+            this.update();
+        }
     }
 
     update() {
         const time = this.getTimeRemaining(this.props.endDate);
         const newTimeString = `${leftPad(time.days, 2, '0')}:${leftPad(time.hours, 2, '0')}:${leftPad(time.minutes, 2, '0')}:${leftPad(time.seconds, 2, '0')}`;
 
-        this.setState({
-            timeString: newTimeString
-        });
-
-        window.requestAnimationFrame(this.update);
+        if (time.total > 0) {
+            this.setState({
+                timeString: newTimeString
+            });
+            window.requestAnimationFrame(this.update);
+        } else {
+            this.setState({
+                timeString: this.props.endMessage
+            });
+            this.props.callback();
+        }
     }
 
     getTimeRemaining(end) {
@@ -53,7 +67,7 @@ export default class Countdown extends Component {
 
     render() {
         return (
-            <div className={this.props.className}>
+            <div className={this.props.className} style={this.state.ready ? '' : 'display:none'}>
                 {this.state.timeString}
             </div>
         );
