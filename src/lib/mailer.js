@@ -42,7 +42,7 @@ class Mailer {
             honorary = `
                 <tr>
                     <td style="padding:0 20px;color:#41d2ff;font-weight:bold;">
-                        <p>Congratulations! You have been Math.random()'ly selected to be Ian's Best Man! Just kidding about the random part, I am absolutely honored to have you by my side for this moment of my life. Love you man.</p>
+                        <p>Sadly this is my wedding so I can't embarrass you with your video dancing to 'Party in the USA' this time... Congratulations! You have been chosen by 1313 Frankenqueen to be my Maid of Honor! I am absolutely honored to have you by my side for this special moment. Love you!</p>
                     </td>
                 </tr>
             `;
@@ -73,7 +73,7 @@ class Mailer {
                     </td>
                 </tr>
             `;
-        } else if ([0, 4, 5, 6, 7].indexOf(category) !== -1) { // bridesmaids / groomsmen
+        } else if ([4, 5, 6, 7].indexOf(category) !== -1) { // bridesmaids / groomsmen
             note = `
                 <tr>
                     <td style="padding:0 20px;color:#41d2ff;font-style:italic;">
@@ -94,8 +94,6 @@ class Mailer {
      * @param {string} emailTo - Email address to send the invitation to.
      */
     sendInvite(emailTo, honorary, note) {
-        const dataFile = fs.readFileSync('../data.json');
-        const guestList = JSON.parse(dataFile);
         console.log('Emailing To: %s', emailTo);
 
         // setup email data with unicode symbols
@@ -169,6 +167,12 @@ class Mailer {
                 cid: 'invitationHeader' //same cid value as in the html img src
             }]
         };
+
+        // only send email if env is production
+        if (process.env.NODE_ENV !== 'production') {
+            console.warn('[DEV MODE] NOT sending email');
+            return;
+        }
 
         // send mail with defined transport object
         return this.transporter.sendMail(mailOptions)

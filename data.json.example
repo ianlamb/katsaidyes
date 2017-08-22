@@ -1,13 +1,15 @@
 {
   "categories": {
       "0": "Bride & Groom",
-      "1": "Family",
+      "1": "Immediate Family",
       "2": "Canadian Friends",
       "3": "International Friends",
       "4": "Bridesmaids",
       "5": "Maid of Honor",
       "6": "Groomsmen",
-      "7": "Best Man"
+      "7": "Best Man",
+      "8": "Extended Family",
+      "9": "Maybes"
   },
   "guests": [
     {

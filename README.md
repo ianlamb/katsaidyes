@@ -193,3 +193,19 @@ Don't forget to setup data.json on server, then:
 nvm use v8.1.3
 PORT=8282 NODE_ENV=production SECRET={it's a secret} forever start index.js
 ```
+
+To dry-run email invites by category:
+
+```
+cd scripts
+cross-env SMTP_USER=ianlamb32@gmail.com SMTP_PASS={it's a secret} node invite -c {0-9}
+```
+
+To dry-run email invites by email:
+
+```
+cd scripts
+cross-env SMTP_USER=ianlamb32@gmail.com SMTP_PASS={it's a secret} node invite -e test@example.com
+```
+
+To actually send emails add `NODE_ENV=production`
