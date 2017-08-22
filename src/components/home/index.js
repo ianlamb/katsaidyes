@@ -2,7 +2,8 @@ import { h, Component } from 'preact';
 import style from './style.less';
 import 'react-photoswipe/lib/photoswipe.css';
 import { PhotoSwipeGallery } from 'react-photoswipe';
-import { RsvpModal } from '../rsvp';
+import RsvpModal from '../rsvp';
+import Countdown from '../countdown';
 import throttle from 'lodash/throttle';
 import url from 'url';
 import photoData from './photos';
@@ -26,6 +27,7 @@ export default class Home extends Component {
         this.photoswipeOptions = {};
         this.photos = photoData;
         this.modalOffset = 0;
+        this.weddingDate = new Date('2017-12-23T19:00:00Z');
 
         this.state = {
             emailPrefill: '',
@@ -50,10 +52,6 @@ export default class Home extends Component {
                 showRsvpModal: true
             })
         }
-
-        // if (navigator.appName == 'Microsoft Internet Explorer' || !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/))) {
-        //     this.parallax = false;
-        // }
     }
 
     componentDidMount() {
@@ -112,8 +110,7 @@ export default class Home extends Component {
                 <section
                     id='hero'
                     className={`${style.section} ${style.hero} ${this.state.loadHero ? ' ' + style.showBackground : ''}`}
-                    style={`transform:translateY(${this.state.scrollTop}px)`}
-                    >
+                    style={`transform:translateY(${this.state.scrollTop}px)`}>
                     <div className={style.content}>
                         <h1 class={`${style.animated} ${style.fadeInUp}`}>
                             Kat
@@ -156,6 +153,7 @@ export default class Home extends Component {
                             Ian
                         </h1>
                     </div>
+                    <Countdown endDate={this.weddingDate} className={style.countdown} />
                 </section>
                 <section id='details' className={`${style.section} ${style.patternBackground}`}>
                     <div className={style.content}>

@@ -5,7 +5,7 @@ import debounce from 'lodash/debounce';
 
 const VERIFY_EMAIL_DEBOUNCE = 200;
 
-export class RsvpModal extends Component {
+export default class RsvpModal extends Component {
 	constructor() {
         super();
 
