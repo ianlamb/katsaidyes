@@ -257,7 +257,8 @@ export class RsvpModal extends Component {
                                 <label class={style.label} for='name'><span class={style.labelContent}>Guest Name</span></label>
                             </div>
                             <div class={style.formGroup}>
-                                <label>Will you be attending?</label>
+                                <label>Will you be attending the ceremony &amp; dinner in London?</label>
+                                <br />
                                 <label class={style.optionLabel}>
                                     <input type='radio' class={style.optionInput + ' ' + style.radio} name='attending' value='yes' checked={this.state.form.attending === 'yes'} onChange={this.onInputChange} />
                                     Yes
