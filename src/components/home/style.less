@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-    margin: 0;
+    margin: 10vh 0 0;
     font-size: 5rem;
     text-align: center;
     color: rgba(255, 245, 235, 0.9);
@@ -136,15 +136,27 @@ p {
     }
 
     &.hero {
+        position: relative;
         background: #333;
         color: @white !important;
         min-height: 100vh;
-        padding: 10rem 0;
+        padding: 5rem 0;
         will-change: transform;
         transition: transform 500ms;
+        pointer-events: none;
+        cursor: default;
 
         // turning off parallax
         transform: none !important;
+
+        > .countdown {
+            position: fixed;
+            bottom: 10vh;
+            width: 100%;
+            font-family: monospace;
+            font-size: 1.5rem;
+            text-align: center;
+        }
 
         .content {
             background: transparent;
@@ -253,20 +265,6 @@ p {
     width: 100%;
 }
 
-iframe {
-    border: 0;
-    float: right;
-    margin: 0.5rem;
-    width: 100%;
-    height: 300px;
-
-    @media (min-width: 768px) {
-        width: 400px;
-        margin-top: 0;
-        margin-right: 0;
-    }
-}
-
 .footerText {
     margin-top: 2rem;
     margin-bottom: 4rem;
@@ -300,7 +298,18 @@ iframe {
     will-change: transform;
 }
 
-.googleMapEmbed {
+iframe.googleMapEmbed {
+    border: 0;
+    float: right;
+    margin: 0.5rem;
+    width: 100%;
+    height: 300px;
     position: relative;
     z-index: 1;
+
+    @media (min-width: 768px) {
+        width: 400px;
+        margin-top: 0;
+        margin-right: 0;
+    }
 }

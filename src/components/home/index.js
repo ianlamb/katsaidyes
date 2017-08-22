@@ -2,7 +2,8 @@ import { h, Component } from 'preact';
 import style from './style.less';
 import 'react-photoswipe/lib/photoswipe.css';
 import { PhotoSwipeGallery } from 'react-photoswipe';
-import { RsvpModal } from '../rsvp';
+import RsvpModal from '../rsvp';
+import Countdown from '../countdown';
 import throttle from 'lodash/throttle';
 import url from 'url';
 import photoData from './photos';
@@ -26,6 +27,8 @@ export default class Home extends Component {
         this.photoswipeOptions = {};
         this.photos = photoData;
         this.modalOffset = 0;
+        this.weddingDate = new Date('2017-12-23T19:00:00Z');
+        this.countdownMessage = 'The ceremony has begun! Congrats on having this page open when it happened!';
 
         this.state = {
             emailPrefill: '',
@@ -50,10 +53,6 @@ export default class Home extends Component {
                 showRsvpModal: true
             })
         }
-
-        // if (navigator.appName == 'Microsoft Internet Explorer' || !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/))) {
-        //     this.parallax = false;
-        // }
     }
 
     componentDidMount() {
@@ -112,8 +111,7 @@ export default class Home extends Component {
                 <section
                     id='hero'
                     className={`${style.section} ${style.hero} ${this.state.loadHero ? ' ' + style.showBackground : ''}`}
-                    style={`transform:translateY(${this.state.scrollTop}px)`}
-                    >
+                    style={`transform:translateY(${this.state.scrollTop}px)`}>
                     <div className={style.content}>
                         <h1 class={`${style.animated} ${style.fadeInUp}`}>
                             Kat
@@ -156,6 +154,7 @@ export default class Home extends Component {
                             Ian
                         </h1>
                     </div>
+                    <Countdown endDate={this.weddingDate} endMessage={this.countdownMessage} className={style.countdown} />
                 </section>
                 <section id='details' className={`${style.section} ${style.patternBackground}`}>
                     <div className={style.content}>
@@ -203,18 +202,18 @@ export default class Home extends Component {
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <h4>Black Trumpet @ 4:00PM - 7:00PM</h4>
-                            <p>The restaurant is downtown so please arrange for transportation from the venue and allow some time to find parking. Approximate driving time from Fernwood Hills to Downtown London is 25-30 minutes. Everyone will be able to choose their menu options at the restaurant. Alcohol will not be included with the dinner, but will be available for purchase.</p>
+                            <p>The restaurant is downtown so please arrange for transportation from the venue and allow some time to find parking. Approximate driving time from Fernwood Hills to Downtown London is 25-30 minutes. Everyone will be able to choose their menu options at the restaurant. Food allergies will be accomodated. A champagne toast will be provided with dinner, but any other alcohol purchased will be billed separately (sorry, no open bar).</p>
                         </Reveal>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <h5>Location &amp; Parking</h5>
                             <p>523 Richmond St, London, ON, Canada</p>
-                            <p>There are lots of options for parking downtown. Our suggestion is to park on the street or at one of the municipal lots on Kent St near Richmond or Queens St near Richmond. Metered parking is free after 6PM on Saturdays, so you should only have to pay for 1 hour.</p>
+                            <p>There are lots of options for parking downtown. Our suggestion is to park on the street or at one of the municipal lots on Kent St near Richmond or Queens St near Richmond. Metered parking is free after 6PM on Saturdays, so you should only have to pay for 2 hours.</p>
                         </Reveal>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <h3>After Party</h3>
-                            <p>After dinner everyone is free to take off or join us for some drinks and socializing at a nearby establishment (likely Milos' Craft Beer Emporium).</p>
+                            <p>After dinner everyone is free to take off or join us for some drinks and more socializing at a nearby establishment (likely Milos' Craft Beer Emporium, but this is TBD).</p>
                         </Reveal>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
