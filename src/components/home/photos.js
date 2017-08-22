@@ -17,11 +17,11 @@ export default [
         title: `Kat\`s Sapphire engagement ring`
     },
     {
-        src: require(`../../assets/images/photos/1-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/1-${thumbSize}.jpg`),
+        src: require(`../../assets/images/photos/44-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/44-${thumbSize}.jpg`),
         w: 800,
         h: 600,
-        title: `Huntington Beach just before eating at Watertable for our second anniversary`
+        title: `The orc statue in the middle of Blizzard Entertainment HQ, the whole reason we moved down to California`
     },
     {
         src: require(`../../assets/images/photos/2-${srcSize}.jpg`),
@@ -36,6 +36,13 @@ export default [
         w: 786,
         h: 800,
         title: `Premier of the Warcraft movie at Edwards Irvine Spectrum`
+    },
+    {
+        src: require(`../../assets/images/photos/1-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/1-${thumbSize}.jpg`),
+        w: 800,
+        h: 600,
+        title: `Huntington Beach just before eating at Watertable for our second anniversary`
     },
     {
         src: require(`../../assets/images/photos/5-${srcSize}.jpg`),
@@ -80,13 +87,6 @@ export default [
         title: `Heart Lock Bridge, Paris`
     },
     {
-        src: require(`../../assets/images/photos/13-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/13-${thumbSize}.jpg`),
-        w: 800,
-        h: 600,
-        title: `The Colosseum, Rome`
-    },
-    {
         src: require(`../../assets/images/photos/15-${srcSize}.jpg`),
         thumbnail: require(`../../assets/images/photos/15-${thumbSize}.jpg`),
         w: 600,
@@ -108,11 +108,11 @@ export default [
         title: `Ready to start our day-trip to San Francisco`
     },
     {
-        src: require(`../../assets/images/photos/18-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/18-${thumbSize}.jpg`),
+        src: require(`../../assets/images/photos/13-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/13-${thumbSize}.jpg`),
         w: 800,
         h: 600,
-        title: `With our travel buddies under the Eiffel Tower`
+        title: `The Colosseum, Rome`
     },
     {
         src: require(`../../assets/images/photos/19-${srcSize}.jpg`),
@@ -227,25 +227,11 @@ export default [
         title: `Kat showing Julie around Huntington Beach, California`
     },
     {
-        src: require(`../../assets/images/photos/37-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/37-${thumbSize}.jpg`),
-        w: 534,
-        h: 800,
-        title: `Colin, Chantelle, Ryan and myself with our hiking crew at Finger Lakes, New York`
-    },
-    {
-        src: require(`../../assets/images/photos/38-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/38-${thumbSize}.jpg`),
-        w: 533,
-        h: 800,
-        title: `Kat and Julian at a christmas party`
-    },
-    {
-        src: require(`../../assets/images/photos/39-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/39-${thumbSize}.jpg`),
+        src: require(`../../assets/images/photos/45-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/45-${thumbSize}.jpg`),
         w: 800,
         h: 600,
-        title: `Bijou being adorable`
+        title: `Made it to the Golden Gate Bridge after a full day of motorcycling from Orange County`
     },
     {
         src: require(`../../assets/images/photos/40-${srcSize}.jpg`),
@@ -255,11 +241,18 @@ export default [
         title: `First ascent in Joshua Tree National Park`
     },
     {
-        src: require(`../../assets/images/photos/41-${srcSize}.jpg`),
-        thumbnail: require(`../../assets/images/photos/41-${thumbSize}.jpg`),
+        src: require(`../../assets/images/photos/38-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/38-${thumbSize}.jpg`),
+        w: 533,
+        h: 800,
+        title: `Kat and Julian at a christmas party`
+    },
+    {
+        src: require(`../../assets/images/photos/18-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/18-${thumbSize}.jpg`),
         w: 800,
-        h: 529,
-        title: `The Lamb family enjoying a typical day at Marg's island cottage on Lake Nipissing, Ontario`
+        h: 600,
+        title: `With our travel buddies under the Eiffel Tower`
     },
     {
         src: require(`../../assets/images/photos/42-${srcSize}.jpg`),
@@ -276,10 +269,31 @@ export default [
         title: `Connor joins us for adventures in Big Bear, California`
     },
     {
+        src: require(`../../assets/images/photos/37-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/37-${thumbSize}.jpg`),
+        w: 534,
+        h: 800,
+        title: `Colin, Chantelle, Ryan and myself with our hiking crew at Finger Lakes, New York`
+    },
+    {
+        src: require(`../../assets/images/photos/39-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/39-${thumbSize}.jpg`),
+        w: 800,
+        h: 600,
+        title: `Bijou being adorable`
+    },
+    {
         src: require(`../../assets/images/photos/44-${srcSize}.jpg`),
         thumbnail: require(`../../assets/images/photos/44-${thumbSize}.jpg`),
         w: 800,
         h: 533,
         title: `The Haldane family at Chris and Angela's wedding`
+    },
+    {
+        src: require(`../../assets/images/photos/41-${srcSize}.jpg`),
+        thumbnail: require(`../../assets/images/photos/41-${thumbSize}.jpg`),
+        w: 800,
+        h: 529,
+        title: `The Lamb family enjoying a typical day at Marg's island cottage on Lake Nipissing, Ontario`
     }
 ];

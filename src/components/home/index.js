@@ -240,7 +240,7 @@ export default class Home extends Component {
                             <h2>Photos</h2>
                         </Reveal>
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
-                            <p>We think our adventures speak to our companionship more than anything, so here are some of our favourite photos in no particular order.</p>
+                            <p>We think our adventures speak to our companionship more than anything, so here are some of our favourite photos since we met in 2014.</p>
                         </Reveal>
 
                         <PhotoSwipeGallery
