@@ -165,7 +165,7 @@ export default class Home extends Component {
                             <h3 className={style.important}>Saturday, December 23rd, 2017<br />London, ON, Canada</h3>
                         </Reveal>
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
-                            <p>We're getting married! We want our wedding to be light-hearted and stress-free, so don't expect any of <a href="https://www.youtube.com/watch?v=O5BeLinyfpg" target="_blank">this</a>. It's going to be a fun get-together with friends and family to celebrate love and life! Thank you so much to everyone who joins us, and if you are not able to you'll be with us in spirit :)</p>
+                            <p>We're getting married! We want our wedding to be light-hearted and stress-free, so don't expect any of <a href="https://www.youtube.com/watch?v=O5BeLinyfpg" target="_blank">this</a>. It's going to be a fun get-together with friends and family to celebrate love and life! Thank you so much to everyone who joins us, and if you are not able to, you'll be with us in spirit :)</p>
                         </Reveal>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
@@ -183,7 +183,7 @@ export default class Home extends Component {
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <h5>Gifts</h5>
-                            <p>Joining us is all we want, please don't bring gifts! Instead, please consider joining us for a Hawaii destination party after the wedding if you have the means to do so. Details for this will be sorted out on Facebook.</p>
+                            <p>Joining us is all we want, please don't bring gifts! Instead, please consider joining us for our Hawaii destination party if you have the means to do so. This will happen tentatively in February, 2018. Details will be sorted out on Facebook.</p>
                         </Reveal>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
@@ -202,7 +202,7 @@ export default class Home extends Component {
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <h4>Black Trumpet @ 4:00PM - 7:00PM</h4>
-                            <p>The restaurant is downtown so please arrange for transportation from the venue and allow some time to find parking. Approximate driving time from Fernwood Hills to Downtown London is 25-30 minutes. Everyone will be able to choose their menu options at the restaurant. Food allergies will be accomodated. A champagne toast will be provided with dinner, but any other alcohol purchased will be billed separately (sorry, no open bar).</p>
+                            <p>The restaurant is downtown so please arrange for transportation from the venue and allow some time to find parking. Approximate driving time from Fernwood Hills to Downtown London is 25-30 minutes. Everyone will be able to choose their menu options at the restaurant. Food allergies will be accommodated. A champagne toast will be provided with dinner, but any other alcohol purchased will be billed separately (sorry, no open bar).</p>
                         </Reveal>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
