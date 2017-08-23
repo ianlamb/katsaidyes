@@ -69,7 +69,7 @@ class Mailer {
             note = `
                 <tr>
                     <td style="padding:0 20px;color:#41d2ff;font-style:italic;">
-                        <p><b>Note to our international friends</b>: We are formally extending this invite, but we do not expect any of you to fly 2,000 miles to watch a 15 minute wedding ceremony. Please consider joining us for the destination wedding party instead. Details will follow on Facebook.</p>
+                        <p><b>Note to our international friends</b>: We are formally extending this invitation out of love, but we do not expect any of you to fly over 2,000 miles to watch a silly 15 minute wedding ceremony. If anything, please consider joining us for the destination party instead. Details will follow on Facebook.</p>
                     </td>
                 </tr>
             `;
