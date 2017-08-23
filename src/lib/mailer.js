@@ -34,7 +34,7 @@ class Mailer {
             honorary = `
                 <tr>
                     <td style="padding:0 20px;color:#41d2ff;font-weight:bold;">
-                        <p>Congratulations! You were selected to be one of Kat's Bridesmaids. We are honored to have you by our side for this special moment.</p>
+                        <p>Congratulations! You were selected to be one of Kat's Bridesmaids. We are honoured to have you by our side for this special moment.</p>
                     </td>
                 </tr>
             `;
@@ -42,7 +42,7 @@ class Mailer {
             honorary = `
                 <tr>
                     <td style="padding:0 20px;color:#41d2ff;font-weight:bold;">
-                        <p>Sadly this is my wedding so I can't embarrass you with your video dancing to 'Party in the USA' this time... Congratulations! You have been chosen by 1313 Frankenqueen to be my Maid of Honor! I am absolutely honored to have you by my side for this special moment. Love you!</p>
+                        <p>Sadly this is my wedding so I can't embarrass you with your video dancing to 'Party in the USA' this time... Congratulations! You have been chosen by 1313 Frankenqueen to be my Maid of Honor! I am absolutely honoured to have you by my side for this special moment. Love you!</p>
                     </td>
                 </tr>
             `;
@@ -50,7 +50,7 @@ class Mailer {
             honorary = `
                 <tr>
                     <td style="padding:0 20px;color:#41d2ff;font-weight:bold;">
-                        <p>Congratulations! You were selected to be one of Ian's Groomsmen. We are honored to have you by our side for this special moment.</p>
+                        <p>Congratulations! You were selected to be one of Ian's Groomsmen. We are honoured to have you by our side for this special moment.</p>
                     </td>
                 </tr>
             `;
@@ -58,7 +58,7 @@ class Mailer {
             honorary = `
                 <tr>
                     <td style="padding:0 20px;color:#41d2ff;font-weight:bold;">
-                        <p>Congratulations! You have been Math.random()'ly selected to be Ian's Best Man! Just kidding about the random part, I am absolutely honored to have you by my side for this special moment. Love you man.</p>
+                        <p>Congratulations! You have been Math.random()'ly selected to be Ian's Best Man! Just kidding about the random part, I am absolutely honoured to have you by my side for this special moment. Love you man.</p>
                     </td>
                 </tr>
             `;
@@ -102,7 +102,7 @@ class Mailer {
             to: emailTo,
             subject: 'Kat & Ian\'s Wedding',
             text: `
-                Katherine Haldane and Ian Lamb request the honor of your presence at their wedding.
+                Katherine Haldane and Ian Lamb request the honour of your presence at their wedding.
                 
                 SATURDAY - DECEMBER 23, 2017 - 2:00 PM
                 FERNWOOD HILLS
@@ -125,7 +125,7 @@ class Mailer {
                     </tr>
                     <tr>
                         <td style="padding:0 20px;">
-                            <p style="font-size:24px;"><b><i>Katherine Haldane</i></b> and <b><i>Ian Lamb</i></b> request the honor of your presence at their wedding.</p>
+                            <p style="font-size:24px;"><b><i>Katherine Haldane</i></b> and <b><i>Ian Lamb</i></b> request the honour of your presence at their wedding.</p>
                         </td>
                     </tr>
                     ${honorary}
