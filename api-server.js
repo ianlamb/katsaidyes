@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const fs = require('fs');
 const serveStatic = require('serve-static');
 const debounce = require('lodash/debounce');
+const cloneDeep = require('lodash/cloneDeep');
 const ENV = process.env.NODE_ENV || 'development';
 const DATA_FILE = process.env.DATA_FILE || 'data.json';
 
@@ -48,15 +49,17 @@ module.exports = (PORT) => {
 
     // only for administration
     app.get('/api/guestlist', auth, function(req, res) {
-        guestList.simpleList = guestList.guests.map((o) => o.firstName + ' ' + o.lastName);
-        guestList._total = guestList.guests.length;
-        guestList._responded = guestList.guests.filter((o) => o.responses).length;
-        guestList._attending = guestList.guests.filter((o) => o.attending === 'yes').length;
-        guestList._extras = guestList.guests.reduce((a, o, i) => {
+        let payload = cloneDeep(guestList);
+        payload.simpleList = payload.guests.map((o) => o.firstName + ' ' + o.lastName);
+        payload._total = payload.guests.length;
+        payload._responded = payload.guests.filter((o) => o.responses).length;
+        payload._attending = payload.guests.filter((o) => o.attending === 'yes').length;
+        payload._extras = payload.guests.reduce((a, o, i) => {
             return a + (o.extras || 0);
         }, 0);
-        guestList._responsePercentage = Math.floor(guestList._responded / guestList._total * 100);
-        res.json(guestList);
+        payload._responsePercentage = Math.floor(payload._responded / payload._total * 100);
+        payload._attendancePercentage = Math.floor(payload._attending / payload._total * 100);
+        res.json(payload);
     });
 
     // used by the rsvp form to verify guest email
