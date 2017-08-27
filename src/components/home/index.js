@@ -183,7 +183,7 @@ export default class Home extends Component {
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
                             <h5>Gifts</h5>
-                            <p>Joining us is all we want, please don't bring gifts! Instead, please consider joining us for our Hawaii destination party if you have the means to do so. This will happen tentatively in February, 2018. Details will be sorted out on Facebook.</p>
+                            <p>Joining us is all we want, please don't bring gifts! Instead, please consider joining us for our Hawaii destination party if you have the means to do so. This will tentatively happen in February, 2018. Details will be sorted out on Facebook.</p>
                         </Reveal>
 
                         <Reveal effect={`${style.animated} ${style.fadeInUp}`}>
