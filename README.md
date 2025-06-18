@@ -1,21 +1,8 @@
 # Kat Said Yes
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1f0c6a84-42b9-48eb-84e7-a3a02ff5e39a/deploy-status)](https://app.netlify.com/projects/katsaidyes/deploys)
+
 Wedding website build with preact-boilerplate.
-
-
----
-
-
-[![Build Status](https://travis-ci.org/developit/preact-boilerplate.svg?branch=master)](https://travis-ci.org/developit/preact-boilerplate)
-[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/developit/preact)
-
-> :guitar: Ready-to-rock [Preact] starter project, powered by [webpack].
->
-> :rocket: If you're starting a new project using [Preact], you've come to the right place.
-Below is a step-by-step guide that takes you straight from downloading this boilerplate to production.
->
-> **[:boom: View Demo :boom:](https://preact-boilerplate.surge.sh)**
-
 
 ---
 
